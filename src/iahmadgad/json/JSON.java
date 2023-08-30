@@ -2,56 +2,82 @@ package iahmadgad.json;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class JSON 
 {
-	
-	private static String source;
-	
-	public static String getSource() 
+	public JSON()
 	{
-		return source;
-	}
-
-	public static void setSource(String source) 
-	{
-		JSON.source = source;
+		JSONTree = new HashMap<String, Object>();
 	}
 	
 	public JSON(String string)
 	{
-		String source = "";
-		for(int i = 0; i < string.length(); i++)
-		{
-			char c = string.charAt(i);
-			if(c != '\s' && c != '\n') source += c;
-		}
-		setSource(source);
+		JSONTree = new JSONParse(string).getKeysAndValues();
 	}
 	
 	public JSON(File file)
 	{
-		String string = "";
-		try 
-		{
-			Scanner scanner = new Scanner(file);
-			while(scanner.hasNextLine())
-			{
-				string += scanner.nextLine();
-			}
-			scanner.close();
-		}
-		catch (FileNotFoundException e) 
-		{
-			e.printStackTrace();
-		}
-		String source = "";
-		for(int i = 0; i < string.length(); i++)
-		{
-			char c = string.charAt(i);
-			if(c != '\s' && c != '\n') source += c;
-		}
-		setSource(source);
+		JSONTree = new JSONParse(file).getKeysAndValues();
+	}
+	
+	private static HashMap<String, Object> JSONTree;
+	
+	public static HashMap<String, Object> getJSONTree()
+	{
+		return JSONTree;
+	}
+	
+	public Object get(String key)
+	{
+		
+		return JSONTree.get(key);
+	}
+	
+	public String getString(String key)
+	{
+		
+		return (String) JSONTree.get(key);
+	}
+	
+	public int getInteger(String key)
+	{
+		return (int) JSONTree.get(key);
+	}
+	
+	public double getDouble(String key)
+	{
+		return (double) JSONTree.get(key);
+	}
+	
+	public boolean getBoolean(String key)
+	{
+		return (boolean) JSONTree.get(key);
+	}
+	
+	public void put(String key, Object value)
+	{
+		this.JSONTree.put(key, value);
+	}
+	
+	public void putString(String key, String value)
+	{
+		this.JSONTree.put(key, value);
+	}
+	
+	public void putInteger(String key, int value)
+	{
+		this.JSONTree.put(key, value);
+	}
+	
+	public void putDouble(String key, double value)
+	{
+		this.JSONTree.put(key, value);
+	}
+	
+	public void putBoolean(String key, boolean value)
+	{
+		this.JSONTree.put(key, value);
 	}
 }

@@ -9,30 +9,54 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class JSONRead 
+public class JSONParse 
 {
-	
-	private static String source;
-	
-	public static String getSource() {
-		return source;
-	}
-
-	public static void setSource(String source) {
-		JSONRead.source = source;
-	}
-	
-	public JSONRead(JSON json)
+	public JSONParse(String string)
 	{
-		setSource(json.getSource());
-		parse();
+		String source = "";
+		for(int i = 0; i < string.length(); i++)
+		{
+			char c = string.charAt(i);
+			if(c != '\s' && c != '\n') source += c;
+		}
+		parse(source);
+	}
+	
+	public JSONParse(File file)
+	{
+		String string = "";
+		try 
+		{
+			Scanner scanner = new Scanner(file);
+			while(scanner.hasNextLine())
+			{
+				string += scanner.nextLine();
+			}
+			scanner.close();
+		}
+		catch (FileNotFoundException e) 
+		{
+			e.printStackTrace();
+		}
+		String source = "";
+		for(int i = 0; i < string.length(); i++)
+		{
+			char c = string.charAt(i);
+			if(c != '\s' && c != '\n') source += c;
+		}
+		parse(source);
+	}
+	
+	public static HashMap<String, Object> getKeysAndValues() 
+	{
+		return keysAndValues;
 	}
 	
 	private static HashMap<String, Object> keysAndValues;
 	
-	public static void parse()
+	public static void parse(String source)
 	{
-		String array[] = getSource().split("[,{}]");
+		String array[] = source.split("[,{}]");
 		ArrayList<String> pairs = new ArrayList<String>();
 		for(int i = 0; i < array.length; i++)
 		{
@@ -49,32 +73,5 @@ public class JSONRead
 			else if(value.contains(".")) keysAndValues.put(key, Double.parseDouble(value));
 			else keysAndValues.put(key, Integer.parseInt(value));
 		}
-	}
-	
-	public Object get(String key)
-	{
-		
-		return keysAndValues.get(key);
-	}
-	
-	public String getString(String key)
-	{
-		
-		return (String) keysAndValues.get(key);
-	}
-	
-	public int getInteger(String key)
-	{
-		return (int) keysAndValues.get(key);
-	}
-	
-	public double getDouble(String key)
-	{
-		return (double) keysAndValues.get(key);
-	}
-	
-	public boolean getBoolean(String key)
-	{
-		return (boolean) keysAndValues.get(key);
 	}
 }
