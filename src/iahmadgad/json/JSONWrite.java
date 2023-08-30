@@ -4,11 +4,15 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Map.Entry;
-import java.util.Set;
+
+/**
+ * JSONWrite Class
+ * @author iAhmadGad
+ * @version 0.1
+ *
+ */
 
 public class JSONWrite 
 {

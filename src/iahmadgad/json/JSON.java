@@ -1,9 +1,14 @@
 package iahmadgad.json;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.HashMap;
-import java.util.Scanner;
+
+/**
+ * JSON Class
+ * @author iAhmadGad
+ * @version 0.1
+ *
+ */
 
 public class JSON 
 {
