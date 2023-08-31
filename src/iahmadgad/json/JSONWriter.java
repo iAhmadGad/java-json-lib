@@ -10,17 +10,22 @@ import java.util.Map.Entry;
 /**
  * JSONWrite Class
  * @author iAhmadGad
- * @version 0.1
+ * @version 0.2
  *
  */
 
-public class JSONWrite 
+public class JSONWriter 
 {
-	public JSONWrite(File file, JSON json, byte indentation)
+	
+	private static File file;
+	
+	public JSONWriter(File file)
 	{
-		
+		JSONWriter.file = file;
+	}
+	public void write(JSON json, int indentation)
+	{
 		HashMap<String, Object> tree = json.getJSONTree();
-		
 		try 
 		{
 			FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8);
@@ -39,10 +44,10 @@ public class JSONWrite
 		}
 	}
 	
-	public static String indent(byte i)
+	private static String indent(int i)
 	{
 		String string = "";
-		for(byte j = 0; j < i; i++) string += " ";
+		for(byte j = 0; j < i; j++) string += " ";
 		return string;
 	}
 }

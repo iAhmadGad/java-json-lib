@@ -6,7 +6,7 @@ import java.util.HashMap;
 /**
  * JSON Class
  * @author iAhmadGad
- * @version 0.1
+ * @version 0.2
  *
  */
 
@@ -19,17 +19,19 @@ public class JSON
 	
 	public JSON(String string)
 	{
-		JSONTree = new JSONParse(string).getKeysAndValues();
+		new JSONParse(string);
+		JSONTree = JSONParse.getJSONTree();
 	}
 	
 	public JSON(File file)
 	{
-		JSONTree = new JSONParse(file).getKeysAndValues();
+		new JSONParse(file);
+		JSONTree = JSONParse.getJSONTree();
 	}
 	
-	private static HashMap<String, Object> JSONTree;
+	private HashMap<String, Object> JSONTree;
 	
-	public static HashMap<String, Object> getJSONTree()
+	public HashMap<String, Object> getJSONTree()
 	{
 		return JSONTree;
 	}
@@ -84,5 +86,30 @@ public class JSON
 	public void putBoolean(String key, boolean value)
 	{
 		this.JSONTree.put(key, value);
+	}
+	
+	public void replace(String key, Object value)
+	{
+		this.JSONTree.replace(key, value);
+	}
+	
+	public void replaceString(String key, String value)
+	{
+		this.JSONTree.replace(key, value);
+	}
+	
+	public void replaceInteger(String key, int value)
+	{
+		this.JSONTree.replace(key, value);
+	}
+	
+	public void replaceDouble(String key, double value)
+	{
+		this.JSONTree.replace(key, value);
+	}
+	
+	public void replaceBoolean(String key, boolean value)
+	{
+		this.JSONTree.replace(key, value);
 	}
 }

@@ -9,7 +9,7 @@ import java.util.HashMap;
 /**
  * JSONParse Class
  * @author iAhmadGad
- * @version 0.1
+ * @version 0.2
  *
  */
 
@@ -51,12 +51,12 @@ public class JSONParse
 		parse(source);
 	}
 	
-	public static HashMap<String, Object> getKeysAndValues() 
+	public static HashMap<String, Object> getJSONTree()
 	{
-		return keysAndValues;
+		return JSONTree;
 	}
 	
-	private static HashMap<String, Object> keysAndValues;
+	private static HashMap<String, Object> JSONTree;
 	
 	public static void parse(String source)
 	{
@@ -66,16 +66,12 @@ public class JSONParse
 		{
 			if(array[i] != "") pairs.add(array[i]);
 		}
-		keysAndValues = new HashMap<String, Object>();
+		JSONTree = new HashMap<String, Object>();
 		for(int i = 0; i < pairs.size(); i++)
 		{
 			String key = pairs.get(i).split(":")[0], value = pairs.get(i).split(":")[1];
 			key = key.substring(1, key.length() - 1);
-			if(value.contains("\"")) keysAndValues.put(key, value.substring(1, value.length() - 1));
-			else if(value.compareTo("true") == 0) keysAndValues.put(key, true);
-			else if(value.compareTo("false") == 0) keysAndValues.put(key, false);
-			else if(value.contains(".")) keysAndValues.put(key, Double.parseDouble(value));
-			else keysAndValues.put(key, Integer.parseInt(value));
+			JSONTree.put(key, TypeChecker.getVariable(value));
 		}
 	}
 }
