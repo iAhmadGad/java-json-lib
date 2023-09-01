@@ -1,6 +1,5 @@
 package iahmadgad.json;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class JSONObject 
@@ -52,68 +51,79 @@ public class JSONObject
 		return (double) Object.get(key);
 	}
 	
-	public HashMap<String, Object> getJSONObject(String key)
+	public JSONObject getJSONObject(String key)
 	{
-		return (HashMap<String, Object>) Object.get(key);
+		return (JSONObject) Object.get(key);
 	}
 	
-	public ArrayList<Object> getJSONArray(String key)
+	public JSONArray getJSONArray(String key)
 	{
-		return (ArrayList<Object>) Object.get(key);
+		return (JSONArray) Object.get(key);
 	}
 	
 	public void add(JSONPointer pointer, Object object)
 	{
+		pointer.setObject(this);
 		if(Validator.isValid(object)) getJSONArray(pointer).add(object);
 	}
 	
 	public void set(JSONPointer pointer, int index, Object object)
 	{
+		pointer.setObject(this);
 		if(Validator.isValid(object)) getJSONArray(pointer).set(index, object);
 	}
 	
 	public void put(JSONPointer pointer, String key, Object value)
 	{
+		pointer.setObject(this);
 		if(Validator.isValid(value)) getJSONObject(pointer).put(key, value);
 	}
 	
 	public void replace(JSONPointer pointer, String key, Object value)
 	{
+		pointer.setObject(this);
 		if(Validator.isValid(value)) getJSONObject(pointer).replace(key, value);
 	}
 	
 	public Object get(JSONPointer pointer)
 	{
+		pointer.setObject(this);
 		return pointer.getPointee();
 	}
 	
 	public String getString(JSONPointer pointer)
 	{
+		pointer.setObject(this);
 		return (String) pointer.getPointee();
 	}
 	
 	public boolean getBoolean(JSONPointer pointer)
 	{
+		pointer.setObject(this);
 		return (boolean) pointer.getPointee();
 	}
 	
 	public int getInteger(JSONPointer pointer)
 	{
+		pointer.setObject(this);
 		return (int) pointer.getPointee();
 	}
 	
 	public double getDouble(JSONPointer pointer)
 	{
+		pointer.setObject(this);
 		return (double) pointer.getPointee();
 	}
 	
-	public HashMap<String, Object> getJSONObject(JSONPointer pointer)
+	public JSONObject getJSONObject(JSONPointer pointer)
 	{
-		return (HashMap<String, Object>) pointer.getPointee();
+		pointer.setObject(this);
+		return (JSONObject) pointer.getPointee();
 	}
 	
-	public ArrayList<Object> getJSONArray(JSONPointer pointer)
+	public JSONArray getJSONArray(JSONPointer pointer)
 	{
-		return (ArrayList<Object>) pointer.getPointee();
+		pointer.setObject(this);
+		return (JSONArray) pointer.getPointee();
 	}
 }
