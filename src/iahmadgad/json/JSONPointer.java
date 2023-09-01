@@ -68,7 +68,7 @@ public class JSONPointer
 	
 	private static String[] pathLocations()
 	{
-		String[] array = path.split("[.\\[\\]]");
+		String[] array = (path.contains(".")) ? path.split("[.\\[\\]]") : path.split("[/\\[\\]]");
 		ArrayList<String> list = new ArrayList<String>();
 		for(int i = 0; i < array.length; i++)
 		{
