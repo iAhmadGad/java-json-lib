@@ -30,6 +30,7 @@ public class JSONStringBuilder
 		counter = 0;
 		for(Entry entry: object.entrySet())
 		{
+			JSONString += Settings.getIndentation(i + 1) + (counter != 0 ? ',' : "") + "\"" + entry.getKey() + "\"" + Settings.getSpaceAroundColon() + ':' + Settings.getSpaceAroundColon();
 			if(Validator.isJSONArray(entry.getValue()))
 			{
 				build((JSONArray) entry.getValue(), i + 1);
@@ -44,7 +45,7 @@ public class JSONStringBuilder
 			}
 			else
 			{
-				JSONString += Settings.getIndentation(i + 1) + (counter != 0 ? ',' : "") + "\"" + entry.getKey() + "\"" + Settings.getSpaceAroundColon() + ':' + Settings.getSpaceAroundColon() + (Validator.isString(entry.getValue()) ? "\"" + entry.getValue() + "\"" : entry.getValue()) + "\n";
+				JSONString += (Validator.isString(entry.getValue()) ? "\"" + entry.getValue() + "\"" : entry.getValue()) + "\n";
 				counter++;
 			}
 		}
