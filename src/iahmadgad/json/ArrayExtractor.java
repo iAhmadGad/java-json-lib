@@ -9,17 +9,17 @@ public class ArrayExtractor
 		ArrayExtractor.array = array;
 	}
 	
-	public Object[] getArray()
+	public Object[] extractArray()
 	{
 		return array.getNode().toArray();
 	}
 	
-	public String[] getStringArray()
+	public String[] extractStringArray()
 	{
 		return array.getNode().toArray(new String[0]);
 	}
 	
-	public boolean[] getBooleanArray()
+	public boolean[] extractBooleanArray()
 	{
 		Boolean temp1[] = array.getNode().toArray(new Boolean[0]);
 		boolean temp2[] = new boolean[temp1.length];
@@ -27,7 +27,7 @@ public class ArrayExtractor
 		return temp2;
 	}
 	
-	public double[] getDoubleArray()
+	public double[] extractDoubleArray()
 	{
 		Double temp1[] = array.getNode().toArray(new Double[0]);
 		double temp2[] = new double[temp1.length];
@@ -35,7 +35,7 @@ public class ArrayExtractor
 		return temp2;
 	}
 	
-	public int[] getIntArray()
+	public int[] extractIntArray()
 	{
 		Integer temp1[] = array.getNode().toArray(new Integer[0]);
 		int temp2[] = new int[temp1.length];
