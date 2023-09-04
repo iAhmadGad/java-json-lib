@@ -16,12 +16,12 @@ public class JSONObject
 	
 	public JSONObject(String text)
 	{
-		object = new JSONParser(text).getJSONObject();
+		object = new JSONParser(text).getHashMap();
 	}
 	
 	public JSONObject(File file)
 	{
-		object = new JSONParser(file).getJSONObject();
+		object = new JSONParser(file).getHashMap();
 	}
 	
 	public HashMap<String, Object> getNode()

@@ -23,24 +23,24 @@ public class JSONPointer
 		JSONPointer.path = path;
 	}
 	
-	public JSONPointer(String path)
+	protected JSONPointer(String path)
 	{
 		JSONPointer.path = path;
 	}
 	
-	public void setArray(JSONArray array)
+	protected void setArray(JSONArray array)
 	{
 		JSONPointer.array = array;
 		object = null;
 	}
 	
-	public void setObject(JSONObject object)
+	protected void setObject(JSONObject object)
 	{
 		JSONPointer.object = object;
 		array = null;
 	}
 	
-	public Object getPointee()
+	protected Object getPointee()
 	{
 		findPointee();
 		return pointee;

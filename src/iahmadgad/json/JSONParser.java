@@ -13,31 +13,31 @@ public class JSONParser
 	private static JSONObject object = new JSONObject();
 	private static JSONArray array = new JSONArray();
 	
-	public JSONParser(String text)
+	protected JSONParser(String text)
 	{
 		source = text;
 		lineSource();
 		parse();
 	}
 	
-	public JSONParser(File file)
+	protected JSONParser(File file)
 	{
 		readFile(file);
 		lineSource();
 		parse();
 	}
 	
-	public HashMap<String, Object> getJSONObject()
+	protected HashMap<String, Object> getHashMap()
 	{
 		return object.getNode();
 	}
 	
-	public ArrayList<Object> getJSONArray()
+	protected ArrayList<Object> getArrayList()
 	{
 		return array.getNode();
 	}
 	
-	private static void readFile(File file)
+	protected static void readFile(File file)
 	{
 		try 
 		{

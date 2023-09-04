@@ -14,7 +14,7 @@ public class JSONArray
 	
 	public JSONArray(String text)
 	{
-		array = new JSONParser(text).getJSONArray();
+		array = new JSONParser(text).getArrayList();
 	}
 	
 	public ArrayList<Object> getNode()
@@ -25,6 +25,16 @@ public class JSONArray
 	public int size()
 	{
 		return array.size();
+	}
+	
+	public Object[] toArray()
+	{
+		return array.toArray();
+	}
+	
+	public <T> T[] toArray(T[] a)
+	{
+		return array.toArray(a);
 	}
 	
 	public void add(Object object)
