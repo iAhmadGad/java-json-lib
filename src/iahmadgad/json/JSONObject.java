@@ -1,64 +1,82 @@
 package iahmadgad.json;
 
+import java.io.File;
 import java.util.HashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 
 public class JSONObject 
 {
-	private static HashMap<String, Object> Object;
+	private static HashMap<String, Object> object;
 	
 	public JSONObject()
 	{
-		Object = new HashMap<String, Object>();
+		object = new HashMap<String, Object>();
+	}
+	
+	public JSONObject(String text)
+	{
+		object = new JSONParser(text).getJSONObject();
+	}
+	
+	public JSONObject(File file)
+	{
+		object = new JSONParser(file).getJSONObject();
 	}
 	
 	public HashMap<String, Object> getNode()
 	{
-		return Object;
+		return object;
+	}
+	
+	public Set<Entry<String, Object>> entrySet()
+	{
+		return object.entrySet();
 	}
 	
 	public void put(String key, Object value)
 	{
-		if(Validator.isValid(value)) Object.put(key, value);
+		if(Validator.isValid(value)) object.put(key, value);
 	}
 	
 	public void replace(String key, Object value)
 	{
-		if(Validator.isValid(value)) Object.replace(key, value);
+		if(Validator.isValid(value)) object.replace(key, value);
 	}
 	
 	public Object get(String key)
 	{
-		return Object.get(key);
+		return object.get(key);
 	}
 	
 	public String getString(String key)
 	{
-		return (String) Object.get(key);
+		return (String) object.get(key);
 	}
 	
 	public boolean getBoolean(String key)
 	{
-		return (boolean) Object.get(key);
+		return (boolean) object.get(key);
 	}
 	
 	public int getInteger(String key)
 	{
-		return (int) Object.get(key);
+		return (int) object.get(key);
 	}
 	
 	public double getDouble(String key)
 	{
-		return (double) Object.get(key);
+		return (double) object.get(key);
 	}
 	
 	public JSONObject getJSONObject(String key)
 	{
-		return (JSONObject) Object.get(key);
+		return (JSONObject) object.get(key);
 	}
 	
 	public JSONArray getJSONArray(String key)
 	{
-		return (JSONArray) Object.get(key);
+		return (JSONArray) object.get(key);
 	}
 	
 	public void add(JSONPointer pointer, Object object)

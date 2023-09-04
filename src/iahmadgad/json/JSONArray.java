@@ -1,64 +1,80 @@
 package iahmadgad.json;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class JSONArray 
 {
-	private ArrayList<Object> Array;
+	private ArrayList<Object> array;
 	
 	public JSONArray()
 	{
-		Array = new ArrayList<Object>();
+		array = new ArrayList<Object>();
+	}
+	
+	public JSONArray(String text)
+	{
+		array = new JSONParser(text).getJSONArray();
+	}
+	
+	public JSONArray(File file)
+	{
+		array = new JSONParser(file).getJSONArray();
 	}
 	
 	public ArrayList<Object> getNode()
 	{
-		return Array;
+		return array;
+	}
+	
+	public int size()
+	{
+		return array.size();
 	}
 	
 	public void add(Object object)
 	{
-		if(Validator.isValid(object)) Array.add(object);
+		if(Validator.isValid(object)) array.add(object);
 	}
 	
 	public void set(int index, Object object)
 	{
-		if(Validator.isValid(object)) Array.set(index, object);
+		if(Validator.isValid(object)) array.set(index, object);
 	}
 	
 	public Object get(int index)
 	{
-		return Array.get(index);
+		return array.get(index);
 	}
 	
 	public String getString(int index)
 	{
-		return (String) Array.get(index);
+		return (String) array.get(index);
 	}
 	
 	public boolean getBoolean(int index)
 	{
-		return (boolean) Array.get(index);
+		return (boolean) array.get(index);
 	}
 	
 	public int getInteger(int index)
 	{
-		return (int) Array.get(index);
+		return (int) array.get(index);
 	}
 	
 	public double getDouble(int index)
 	{
-		return (double) Array.get(index);
+		return (double) array.get(index);
 	}
 	
 	public JSONObject getJSONObject(int index)
 	{
-		return (JSONObject) Array.get(index);
+		return (JSONObject) array.get(index);
 	}
 	
 	public JSONArray getJSONArray(int index)
 	{
-		return (JSONArray) Array.get(index);
+		return (JSONArray) array.get(index);
 	}
 	
 	public void add(JSONPointer pointer, Object object)

@@ -7,25 +7,6 @@ public class Validator
 		
 	}
 	
-	public static Object getVariable(String variable)
-	{
-		if(presentsString(variable)) return variable.substring(1, variable.length() - 1);
-		else if(presentsBoolean(variable) && variable.compareTo("true") == 0) return true;
-		else if(presentsBoolean(variable) && variable.compareTo("false") == 0) return false;
-		else if(presentsDouble(variable)) return Double.parseDouble(variable);
-		else if(presentsInteger(variable)) return Integer.parseInt(variable);
-		return null;
-	}
-	
-	public static String getPresentedType(String string)
-	{
-		if(presentsString(string)) return "String";
-		else if(presentsBoolean(string)) return "boolean";
-		else if(presentsDouble(string)) return "Double";
-		else if(presentsInteger(string)) return "Integer";
-		return null;
-	}
-	
 	public static String getType(Object object)
 	{
 		if(isString(object)) return "String";
@@ -77,6 +58,25 @@ public class Validator
 		return false;
 	}
 	
+	public static Object getVariable(String string)
+	{
+		if(presentsString(string)) return string.substring(1, string.length() - 1);
+		else if(presentsBoolean(string) && string.compareTo("true") == 0) return true;
+		else if(presentsBoolean(string) && string.compareTo("false") == 0) return false;
+		else if(presentsDouble(string)) return Double.parseDouble(string);
+		else if(presentsInteger(string)) return Integer.parseInt(string);
+		return null;
+	}
+	
+	public static String getPresentedType(String string)
+	{
+		if(presentsString(string)) return "String";
+		else if(presentsBoolean(string)) return "boolean";
+		else if(presentsDouble(string)) return "Double";
+		else if(presentsInteger(string)) return "Integer";
+		return null;
+	}
+	
 	public static boolean presentsString(String string)
 	{
 		if(!presentsBoolean(string) && !presentsInteger(string) && !presentsDouble(string)) return true;
@@ -89,7 +89,7 @@ public class Validator
 		return false;
 	}
 	
-	public static boolean presentsInteger(String string)
+	public static boolean presentsDouble(String string)
 	{
 		int point = 0;
 		for(int i = 0; i < string.length(); i++)
@@ -101,8 +101,12 @@ public class Validator
 		return true;
 	}
 	
-	public static boolean presentsDouble(String string)
+	public static boolean presentsInteger(String string)
 	{
-		return false;
+		for(int i = 0; i < string.length(); i++)
+		{
+			if(!Character.isDigit(string.charAt(i))) return false;
+		}
+		return true;
 	}
 }
