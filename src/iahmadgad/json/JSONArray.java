@@ -17,11 +17,6 @@ public class JSONArray
 		array = new JSONParser(text).getJSONArray();
 	}
 	
-	public JSONArray(File file)
-	{
-		array = new JSONParser(file).getJSONArray();
-	}
-	
 	public ArrayList<Object> getNode()
 	{
 		return array;
