@@ -34,23 +34,23 @@ public class ClassExtractor
 			fields[i].setAccessible(true);
 			try 
 			{
-				if(fieldProperties[1].compareTo("java.lang.Object[]") == 0)
+				if(fieldProperties[0].compareTo("java.lang.Object[]") == 0)
 				{
 					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractArray());
 				}
-				else if(fieldProperties[1].compareTo("java.lang.String[]") == 0)
+				else if(fieldProperties[0].compareTo("java.lang.String[]") == 0)
 				{
 					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractStringArray());
 				}
-				else if(fieldProperties[1].compareTo("boolean[]") == 0)
+				else if(fieldProperties[0].compareTo("boolean[]") == 0)
 				{
 					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractBooleanArray());
 				}
-				else if(fieldProperties[1].compareTo("double[]") == 0)
+				else if(fieldProperties[0].compareTo("double[]") == 0)
 				{
 					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractDoubleArray());
 				}
-				else if(fieldProperties[1].compareTo("int[]") == 0)
+				else if(fieldProperties[0].compareTo("int[]") == 0)
 				{
 					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractIntArray());
 				}
