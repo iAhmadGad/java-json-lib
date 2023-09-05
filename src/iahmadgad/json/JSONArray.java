@@ -2,6 +2,7 @@ package iahmadgad.json;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class JSONArray 
 {
@@ -17,6 +18,51 @@ public class JSONArray
 		array = new JSONParser(text).getArrayList();
 	}
 	
+	public Object[] toArray()
+	{
+		return array.toArray();
+	}
+	
+	public String[] toStringArray()
+	{
+		return new JavaExtractor().extractStringArray(this);
+	}
+	
+	public boolean[] toBooleanArray()
+	{
+		return new JavaExtractor().extractBooleanArray(this);
+	}
+	
+	public int[] toIntArray()
+	{
+		return new JavaExtractor().extractIntArray(this);
+	}
+	
+	public double[] toDoubleArray()
+	{
+		return new JavaExtractor().extractDoubleArray(this);
+	}
+	
+	public List<String> toStringList()
+	{
+		return new JavaExtractor().extractStringList(this);
+	}
+	
+	public List<Boolean> toBooleanList()
+	{
+		return new JavaExtractor().extractBooleanList(this);
+	}
+	
+	public List<Integer> toIntegerList()
+	{
+		return new JavaExtractor().extractIntegerList(this);
+	}
+	
+	public List<Double> toDoubleList()
+	{
+		return new JavaExtractor().extractDoubleList(this);
+	}
+	
 	public ArrayList<Object> getNode()
 	{
 		return array;
@@ -25,11 +71,6 @@ public class JSONArray
 	public int size()
 	{
 		return array.size();
-	}
-	
-	public Object[] toArray()
-	{
-		return array.toArray();
 	}
 	
 	public <T> T[] toArray(T[] a)
@@ -80,60 +121,6 @@ public class JSONArray
 	public JSONArray getJSONArray(int index)
 	{
 		return (JSONArray) array.get(index);
-	}
-	
-	public void add(JSONPointer pointer, Object object)
-	{
-		pointer.setArray(this);
-		if(Validator.isValid(object)) getJSONArray(pointer).add(object);
-	}
-	
-	public void set(JSONPointer pointer, int index, Object object)
-	{
-		pointer.setArray(this);
-		if(Validator.isValid(object)) getJSONArray(pointer).set(index, object);
-	}
-	
-	public void put(JSONPointer pointer, String key, Object value)
-	{
-		pointer.setArray(this);
-		if(Validator.isValid(value)) getJSONObject(pointer).put(key, value);
-	}
-	
-	public void replace(JSONPointer pointer, String key, Object value)
-	{
-		pointer.setArray(this);
-		if(Validator.isValid(value)) getJSONObject(pointer).replace(key, value);
-	}
-	
-	public Object get(JSONPointer pointer)
-	{
-		pointer.setArray(this);
-		return pointer.getPointee();
-	}
-	
-	public String getString(JSONPointer pointer)
-	{
-		pointer.setArray(this);
-		return (String) pointer.getPointee();
-	}
-	
-	public boolean getBoolean(JSONPointer pointer)
-	{
-		pointer.setArray(this);
-		return (boolean) pointer.getPointee();
-	}
-	
-	public int getInteger(JSONPointer pointer)
-	{
-		pointer.setArray(this);
-		return (int) pointer.getPointee();
-	}
-	
-	public double getDouble(JSONPointer pointer)
-	{
-		pointer.setArray(this);
-		return (double) pointer.getPointee();
 	}
 	
 	public JSONObject getJSONObject(JSONPointer pointer)

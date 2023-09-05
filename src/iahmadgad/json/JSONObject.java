@@ -24,6 +24,11 @@ public class JSONObject
 		object = new JSONParser(file).getHashMap();
 	}
 	
+	public <T> T toClass(Class<T> c)
+	{
+		return new JavaExtractor().extractClass(this, c);
+	}
+	
 	public HashMap<String, Object> getNode()
 	{
 		return object;
@@ -79,58 +84,9 @@ public class JSONObject
 		return (JSONArray) object.get(key);
 	}
 	
-	public void add(JSONPointer pointer, Object object)
+	public <T> T toClass(String path, Class<T> c)
 	{
-		pointer.setObject(this);
-		if(Validator.isValid(object)) getJSONArray(pointer).add(object);
-	}
-	
-	public void set(JSONPointer pointer, int index, Object object)
-	{
-		pointer.setObject(this);
-		if(Validator.isValid(object)) getJSONArray(pointer).set(index, object);
-	}
-	
-	public void put(JSONPointer pointer, String key, Object value)
-	{
-		pointer.setObject(this);
-		if(Validator.isValid(value)) getJSONObject(pointer).put(key, value);
-	}
-	
-	public void replace(JSONPointer pointer, String key, Object value)
-	{
-		pointer.setObject(this);
-		if(Validator.isValid(value)) getJSONObject(pointer).replace(key, value);
-	}
-	
-	public Object get(JSONPointer pointer)
-	{
-		pointer.setObject(this);
-		return pointer.getPointee();
-	}
-	
-	public String getString(JSONPointer pointer)
-	{
-		pointer.setObject(this);
-		return (String) pointer.getPointee();
-	}
-	
-	public boolean getBoolean(JSONPointer pointer)
-	{
-		pointer.setObject(this);
-		return (boolean) pointer.getPointee();
-	}
-	
-	public int getInteger(JSONPointer pointer)
-	{
-		pointer.setObject(this);
-		return (int) pointer.getPointee();
-	}
-	
-	public double getDouble(JSONPointer pointer)
-	{
-		pointer.setObject(this);
-		return (double) pointer.getPointee();
+		return new JavaExtractor().extractClass(getJSONObject(new JSONPointer(path)), c);
 	}
 	
 	public JSONObject getJSONObject(JSONPointer pointer)
