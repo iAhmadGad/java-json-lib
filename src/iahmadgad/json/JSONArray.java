@@ -1,6 +1,5 @@
 package iahmadgad.json;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +19,12 @@ public class JSONArray
 	
 	public <T> JSONArray(T[] array)
 	{
-		this.array = new Converter().toArrayList(array);
+		this.array = new Converter().toJSONArray(array).getNode();
 	}
 	
 	public <T> JSONArray(List<T> list)
 	{
-		this.array = new Converter().toArrayList(list);
+		this.array = new Converter().toJSONArray(list).getNode();
 	}
 	
 	public Object[] toArray()
@@ -76,6 +75,11 @@ public class JSONArray
 	public ArrayList<Object> getNode()
 	{
 		return array;
+	}
+	
+	protected void setNode(ArrayList<Object> array)
+	{
+		this.array = array; 
 	}
 	
 	public int size()
