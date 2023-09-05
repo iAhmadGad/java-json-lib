@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class JSONObject 
 {
-	private static HashMap<String, Object> object;
+	private HashMap<String, Object> object;
 	
 	public JSONObject()
 	{
@@ -24,9 +24,14 @@ public class JSONObject
 		object = new JSONParser(file).getHashMap();
 	}
 	
+	public <T> JSONObject(Class<T> c, T object)
+	{
+		this.object = new Converter().toJSONObject(c, object).getNode();
+	}
+	
 	public <T> T toClass(Class<T> c)
 	{
-		return new Extractor().extractClass(this, c);
+		return new Converter().toClass(this, c);
 	}
 	
 	public HashMap<String, Object> getNode()
