@@ -1,10 +1,29 @@
 package iahmadgad.json;
 
+import java.lang.reflect.Field;
+
 public class Validator 
 {
 	protected Validator()
 	{
 		
+	}
+	
+	protected static Object getFieldValue(Field field, Object fieldValue)
+	{
+		if(field.getType().toString().compareTo("class [Ljava.lang.Object;") == 0) return new ArrayExtractor((JSONArray) fieldValue).extractArray();
+		else if(field.getType().toString().compareTo("class [Ljava.lang.String;") == 0) return new ArrayExtractor((JSONArray) fieldValue).extractStringArray();
+		else if(field.getType().toString().compareTo("class [Z") == 0) return new ArrayExtractor((JSONArray) fieldValue).extractBooleanArray();
+		else if(field.getType().toString().compareTo("class [D") == 0) return new ArrayExtractor((JSONArray) fieldValue).extractIntArray();
+		else if(field.getType().toString().compareTo("class [D") == 0) return new ArrayExtractor((JSONArray) fieldValue).extractDoubleArray();
+		else if(field.getType().toString().compareTo("interface java.util.List") == 0)
+		{
+			if(field.getGenericType().toString().compareTo("java.util.List<java.lang.Object>") == 0) return new ListExtractor((JSONArray) fieldValue).extractList();
+		    else if(field.getGenericType().toString().compareTo("java.util.List<java.lang.String>") == 0) return new ListExtractor((JSONArray) fieldValue).extractStringList();
+		    else if(field.getGenericType().toString().compareTo("java.util.List<java.lang.Integer>") == 0) return new ListExtractor((JSONArray) fieldValue).extractIntList();
+		    else if(field.getGenericType().toString().compareTo("java.util.List<java.lang.Double>") == 0) return new ListExtractor((JSONArray) fieldValue).extractDoubleList();
+		}
+		return fieldValue;
 	}
 	
 	protected static String getType(Object object)
