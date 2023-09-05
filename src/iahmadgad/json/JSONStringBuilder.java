@@ -25,7 +25,6 @@ public class JSONStringBuilder
 	
 	private void build(JSONObject object, int i)
 	{
-		JSONString += (i != 0) ? ',' : "";
 		JSONString += Settings.getIndentation(i) + "{\n";
 		counter = 0;
 		for(Entry entry: object.entrySet())
@@ -55,7 +54,6 @@ public class JSONStringBuilder
 	private void build(JSONArray array, int i)
 	{
 		JSONString += Settings.getIndentation(i);
-		JSONString += (counter != 0) ? "," : "";
 		JSONString += "[\n";
 		for(int j = 0; j < array.size(); j++)
 		{
