@@ -18,6 +18,16 @@ public class JSONArray
 		array = new JSONParser(text).getArrayList();
 	}
 	
+	public <T> JSONArray(T[] array)
+	{
+		this.array = new Converter().toArrayList(array);
+	}
+	
+	public <T> JSONArray(List<T> list)
+	{
+		this.array = new Converter().toArrayList(list);
+	}
+	
 	public Object[] toArray()
 	{
 		return array.toArray();
@@ -25,42 +35,42 @@ public class JSONArray
 	
 	public String[] toStringArray()
 	{
-		return new JavaExtractor().extractStringArray(this);
+		return new Converter().toStringArray(this);
 	}
 	
 	public boolean[] toBooleanArray()
 	{
-		return new JavaExtractor().extractBooleanArray(this);
+		return new Converter().toBooleanArray(this);
 	}
 	
 	public int[] toIntArray()
 	{
-		return new JavaExtractor().extractIntArray(this);
+		return new Converter().toIntArray(this);
 	}
 	
 	public double[] toDoubleArray()
 	{
-		return new JavaExtractor().extractDoubleArray(this);
+		return new Converter().toDoubleArray(this);
 	}
 	
 	public List<String> toStringList()
 	{
-		return new JavaExtractor().extractStringList(this);
+		return new Converter().toStringList(this);
 	}
 	
 	public List<Boolean> toBooleanList()
 	{
-		return new JavaExtractor().extractBooleanList(this);
+		return new Converter().toBooleanList(this);
 	}
 	
 	public List<Integer> toIntegerList()
 	{
-		return new JavaExtractor().extractIntegerList(this);
+		return new Converter().toIntegerList(this);
 	}
 	
 	public List<Double> toDoubleList()
 	{
-		return new JavaExtractor().extractDoubleList(this);
+		return new Converter().toDoubleList(this);
 	}
 	
 	public ArrayList<Object> getNode()
@@ -103,7 +113,7 @@ public class JSONArray
 		return (boolean) array.get(index);
 	}
 	
-	public int getInteger(int index)
+	public int getInt(int index)
 	{
 		return (int) array.get(index);
 	}
@@ -121,6 +131,36 @@ public class JSONArray
 	public JSONArray getJSONArray(int index)
 	{
 		return (JSONArray) array.get(index);
+	}
+	
+	public Object get(JSONPointer pointer)
+	{
+		pointer.setArray(this);
+		return pointer.getPointee();
+	}
+	
+	public String getString(JSONPointer pointer)
+	{
+		pointer.setArray(this);
+		return (String) pointer.getPointee();
+	}
+	
+	public boolean getBoolean(JSONPointer pointer)
+	{
+		pointer.setArray(this);
+		return (boolean) pointer.getPointee();
+	}
+	
+	public int getInt(JSONPointer pointer)
+	{
+		pointer.setArray(this);
+		return (int) pointer.getPointee();
+	}
+	
+	public double getDouble(JSONPointer pointer)
+	{
+		pointer.setArray(this);
+		return (double) pointer.getPointee();
 	}
 	
 	public JSONObject getJSONObject(JSONPointer pointer)

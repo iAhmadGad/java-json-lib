@@ -90,37 +90,39 @@ public class JSONStringBuilder
 	}
 	
 	
-	private static int indentation = 5;
-	private static int spaceAroundColon = 0;
+	private int indentation = 5;
+	private int spaceAroundColon = 0;
 	
-	public static void setIndentation(int i)
+	public void setIndentation(int i)
 	{
 		indentation = i;
 	}
 	
-	public static void setIndentation(SBEnum e)
+	public void setIndentation(SBEnum e)
 	{
 		if (e == SBEnum.DEFAULT) indentation = 5;
+		else if(e == SBEnum.NONE) indentation = 0;
 	}
 	
-	public static String getIndentation(int i)
+	public String getIndentation(int i)
 	{
 		String string = "";
 		for(int j = 0; j < i * indentation; j++) string += " ";
 		return string;
 	}
 	
-	public static void setSpaceAroundColon(int i)
+	public void setSpaceAroundColon(int i)
 	{
 		spaceAroundColon = i;
 	}
 	
-	public static void setSpaceAroundColon(SBEnum e)
+	public void setSpaceAroundColon(SBEnum e)
 	{
 		if (e == SBEnum.DEFAULT) spaceAroundColon = 0;
+		else if(e == SBEnum.NONE) spaceAroundColon = 0;
 	}
 	
-	public static String getSpaceAroundColon()
+	public String getSpaceAroundColon()
 	{
 		String string = "";
 		for(int j = 0; j < spaceAroundColon; j++) string += " ";
@@ -135,6 +137,7 @@ public class JSONStringBuilder
 	
 	public enum SBEnum 
 	{
-		DEFAULT
+		DEFAULT,
+		NONE
 	}
 }

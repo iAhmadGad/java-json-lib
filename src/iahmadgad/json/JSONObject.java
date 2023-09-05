@@ -26,7 +26,7 @@ public class JSONObject
 	
 	public <T> T toClass(Class<T> c)
 	{
-		return new JavaExtractor().extractClass(this, c);
+		return new Extractor().extractClass(this, c);
 	}
 	
 	public HashMap<String, Object> getNode()
@@ -64,7 +64,7 @@ public class JSONObject
 		return (boolean) object.get(key);
 	}
 	
-	public int getInteger(String key)
+	public int getInt(String key)
 	{
 		return (int) object.get(key);
 	}
@@ -84,9 +84,34 @@ public class JSONObject
 		return (JSONArray) object.get(key);
 	}
 	
-	public <T> T toClass(String path, Class<T> c)
+	public Object get(JSONPointer pointer)
 	{
-		return new JavaExtractor().extractClass(getJSONObject(new JSONPointer(path)), c);
+		pointer.setObject(this);
+		return pointer.getPointee();
+	}
+	
+	public String getString(JSONPointer pointer)
+	{
+		pointer.setObject(this);
+		return (String) pointer.getPointee();
+	}
+	
+	public boolean getBoolean(JSONPointer pointer)
+	{
+		pointer.setObject(this);
+		return (boolean) pointer.getPointee();
+	}
+	
+	public int getInt(JSONPointer pointer)
+	{
+		pointer.setObject(this);
+		return (int) pointer.getPointee();
+	}
+	
+	public double getDouble(JSONPointer pointer)
+	{
+		pointer.setObject(this);
+		return (double) pointer.getPointee();
 	}
 	
 	public JSONObject getJSONObject(JSONPointer pointer)
