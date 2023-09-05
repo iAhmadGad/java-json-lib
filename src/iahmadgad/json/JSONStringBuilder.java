@@ -25,11 +25,11 @@ public class JSONStringBuilder
 	
 	private void build(JSONObject object, int i)
 	{
-		JSONString += Settings.getIndentation(i) + "{\n";
+		JSONString += getIndentation(i) + "{\n";
 		counter = 0;
 		for(Entry entry: object.entrySet())
 		{
-			JSONString += Settings.getIndentation(i + 1) + (counter != 0 ? ',' : "") + "\"" + entry.getKey() + "\"" + Settings.getSpaceAroundColon() + ':' + Settings.getSpaceAroundColon();
+			JSONString += getIndentation(i + 1) + (counter != 0 ? ',' : "") + "\"" + entry.getKey() + "\"" + getSpaceAroundColon() + ':' + getSpaceAroundColon();
 			if(Validator.isJSONArray(entry.getValue()))
 			{
 				build((JSONArray) entry.getValue(), i + 1);
@@ -48,12 +48,12 @@ public class JSONStringBuilder
 				counter++;
 			}
 		}
-		JSONString += Settings.getIndentation(i) + "}\n";
+		JSONString += getIndentation(i) + "}\n";
 	}
 	
 	private void build(JSONArray array, int i)
 	{
-		JSONString += Settings.getIndentation(i);
+		JSONString += getIndentation(i);
 		JSONString += "[\n";
 		for(int j = 0; j < array.size(); j++)
 		{
@@ -69,10 +69,10 @@ public class JSONStringBuilder
 			}
 			else 
 			{
-				JSONString += Settings.getIndentation(i + 1) + (array.size() - j != array.size() ? "," : "") + (Validator.isString(array.get(j)) ? "\"" + array.get(j) + "\"" : array.get(j)) + "\n";
+				JSONString += getIndentation(i + 1) + (array.size() - j != array.size() ? "," : "") + (Validator.isString(array.get(j)) ? "\"" + array.get(j) + "\"" : array.get(j)) + "\n";
 			}
 		}
-		JSONString += Settings.getIndentation(i) + "]\n";
+		JSONString += getIndentation(i) + "]\n";
 	}
 	
 	public void write(File file)
@@ -89,50 +89,48 @@ public class JSONStringBuilder
 		}
 	}
 	
-	public class Settings
+	
+	private static int indentation = 5;
+	private static int spaceAroundColon = 0;
+	
+	public static void setIndentation(int i)
 	{
-		private static int indentation = 5;
-		private static int spaceAroundColon = 0;
-		
-		public static void setIndentation(int i)
-		{
-			indentation = i;
-		}
-		
-		public static void setIndentation(SBEnum e)
-		{
-			if (e == SBEnum.DEFAULT) indentation = 5;
-		}
-		
-		public static String getIndentation(int i)
-		{
-			String string = "";
-			for(int j = 0; j < i * indentation; j++) string += " ";
-			return string;
-		}
-		
-		public static void setSpaceAroundColon(int i)
-		{
-			spaceAroundColon = i;
-		}
-		
-		public static void setSpaceAroundColon(SBEnum e)
-		{
-			if (e == SBEnum.DEFAULT) spaceAroundColon = 0;
-		}
-		
-		public static String getSpaceAroundColon()
-		{
-			String string = "";
-			for(int j = 0; j < spaceAroundColon; j++) string += " ";
-			return string;
-		}
-		
-		public void setDefault()
-		{
-			indentation = 3;
-			spaceAroundColon = 0;
-		}
+		indentation = i;
+	}
+	
+	public static void setIndentation(SBEnum e)
+	{
+		if (e == SBEnum.DEFAULT) indentation = 5;
+	}
+	
+	public static String getIndentation(int i)
+	{
+		String string = "";
+		for(int j = 0; j < i * indentation; j++) string += " ";
+		return string;
+	}
+	
+	public static void setSpaceAroundColon(int i)
+	{
+		spaceAroundColon = i;
+	}
+	
+	public static void setSpaceAroundColon(SBEnum e)
+	{
+		if (e == SBEnum.DEFAULT) spaceAroundColon = 0;
+	}
+	
+	public static String getSpaceAroundColon()
+	{
+		String string = "";
+		for(int j = 0; j < spaceAroundColon; j++) string += " ";
+		return string;
+	}
+	
+	public void setDefault()
+	{
+		indentation = 3;
+		spaceAroundColon = 0;
 	}
 	
 	public enum SBEnum 
