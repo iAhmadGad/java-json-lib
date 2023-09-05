@@ -14,7 +14,6 @@ public class ClassExtractor
 		
 	}
 	
-	//@SuppressWarnings({ "unchecked", "rawtypes" })
 	public <T> T extractClass(Class<T> c)
 	{
 		Object type = null;
@@ -30,31 +29,10 @@ public class ClassExtractor
 		for(int i = 0; i < fields.length; i++)
 		{
 			Object current = object.get(fields[i].getName());
-			String fieldProperties[] = fields[i].toString().split("\s");
 			fields[i].setAccessible(true);
 			try 
 			{
-				if(fieldProperties[0].compareTo("java.lang.Object[]") == 0)
-				{
-					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractArray());
-				}
-				else if(fieldProperties[0].compareTo("java.lang.String[]") == 0)
-				{
-					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractStringArray());
-				}
-				else if(fieldProperties[0].compareTo("boolean[]") == 0)
-				{
-					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractBooleanArray());
-				}
-				else if(fieldProperties[0].compareTo("double[]") == 0)
-				{
-					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractDoubleArray());
-				}
-				else if(fieldProperties[0].compareTo("int[]") == 0)
-				{
-					fields[i].set(type, new ArrayExtractor((JSONArray) current).extractIntArray());
-				}
-				else fields[i].set(type, current);
+				fields[i].set(type, Validator.getFieldValue(fields[i], current));
 			} 
 			catch (IllegalArgumentException | IllegalAccessException e) 
 			{
