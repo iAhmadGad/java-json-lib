@@ -4,6 +4,8 @@
 `iahmadgad.json` Package
 </h1>
 
-A simple Java package that parses & writes JSON texts and files. ☕
-
-it can parse & write primitive data types and strings, but until now it can't parse arrays or objects, this will be included in the future -إن شاء الله-.
+A simple Java package that Handles JSON. ☕
+## Repo Index:
+- [**`iahmadgad.json`**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/src/iahmadgad/json) package
+## See:
+- [**JavaDoc**](https://iahmadgad.github.io/Java-JSON-Handler/iahmadgad/json/package-summary.html)
