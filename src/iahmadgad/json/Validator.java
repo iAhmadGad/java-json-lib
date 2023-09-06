@@ -1,6 +1,18 @@
 package iahmadgad.json;
 
+/*
+ * Java JSON Handler
+ */
+
 import java.util.ArrayList;
+
+/**
+ * Validator Class.
+ * 
+ * @author iAhmadGad
+ * @version 0.3
+ * @since 0.3
+*/
 
 public class Validator 
 {

@@ -1,42 +1,93 @@
 package iahmadgad.json;
 
+/*
+ * Java JSON Handler
+ */
+
 import java.util.ArrayList;
+
+/**
+ * JSONPointer Class.
+ * <p>
+ * JSONPointer is a pointer that points to some value in JSONObject or JSONArray.
+ * 
+ * @author iAhmadGad
+ * @version 0.3
+ * @since 0.3
+*/
 
 public class JSONPointer 
 {
+	/**
+	 * The main JSONObject of this JSONPointer.
+	 * <p>
+	 * it equals null if JSONPointer's node is JSONArray.
+	 */
 	private static JSONArray array;
+	
+	/**
+	 * The main JSONArray of this JSONPointer.
+	 * <p>
+	 * it equals null if JSONPointer's node is JSONObject.
+	 */
 	private static JSONObject object;
+	
+	/**
+	 * The path of this JSONPointer.
+	 * <p>
+	 * JSONPointer uses this path to find its pointee.
+	 */
 	private static String path;
+	
+	/**
+	 * The value which this pointer points to.
+	 * <p>
+	 * it can be any valid value that could be stored in JSONObjects & JSONArrays.
+	 */
 	private static Object pointee;
 	
-	public JSONPointer(JSONArray array, String path)
+	/**
+	 * The main Constructor that assigns JSONPointer's path and node.
+	 * @param node
+	 * @param path
+	 */
+	public JSONPointer(JSONArray node, String path)
 	{
-		JSONPointer.array = array;
-		JSONPointer.object = null;
+		array = node;
+		object = null;
 		JSONPointer.path = path;
 	}
 	
-	public JSONPointer(JSONObject object, String path)
+	/**
+	 * The main Constructor that assigns JSONPointer's path and node.
+	 * @param node
+	 * @param path
+	 */
+	public JSONPointer(JSONObject node, String path)
 	{
-		JSONPointer.object = object;
-		JSONPointer.array = null;
+		object = node;
+		array = null;
 		JSONPointer.path = path;
 	}
 	
-	protected JSONPointer(String path)
+	/**
+	 * The main Constructor that assigns JSONPointer's path.
+	 * @param path
+	 */
+	public JSONPointer(String path)
 	{
 		JSONPointer.path = path;
 	}
 	
-	protected void setArray(JSONArray array)
+	protected void setNode(JSONArray node)
 	{
-		JSONPointer.array = array;
+		array = node;
 		object = null;
 	}
 	
-	protected void setObject(JSONObject object)
+	protected void setNode(JSONObject node)
 	{
-		JSONPointer.object = object;
+		object = node;
 		array = null;
 	}
 	

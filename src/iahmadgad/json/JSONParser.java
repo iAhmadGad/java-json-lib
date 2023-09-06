@@ -1,10 +1,22 @@
 package iahmadgad.json;
 
+/*
+ * Java JSON Handler
+ */
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+
+/**
+ * JSONParser Class.
+ * 
+ * @author iAhmadGad
+ * @version 0.3
+ * @since 0.3
+*/
 
 public class JSONParser 
 {

@@ -1,11 +1,23 @@
 package iahmadgad.json;
 
+/*
+ * Java JSON Handler
+ */
+
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
+/**
+ * Convertor Class.
+ * 
+ * @author iAhmadGad
+ * @version 0.3
+ * @since 0.3
+*/
 
 public class Converter 
 {
