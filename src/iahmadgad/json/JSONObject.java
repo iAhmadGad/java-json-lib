@@ -8,6 +8,8 @@ import java.util.Set;
 public class JSONObject 
 {
 	private HashMap<String, Object> node;
+	private String id = null;
+	
 	
 	public JSONObject()
 	{
@@ -39,6 +41,11 @@ public class JSONObject
 		return node;
 	}
 	
+	public String getId()
+	{
+		return id;
+	}
+	
 	public Set<Entry<String, Object>> entrySet()
 	{
 		return node.entrySet();
@@ -46,6 +53,7 @@ public class JSONObject
 	
 	public void put(String key, Object value)
 	{
+		if(key.compareTo("$id") == 0 && Validator.isString(value)) id = (String) value;
 		if(Validator.isValid(value)) node.put(key, value);
 	}
 	
