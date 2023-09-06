@@ -82,14 +82,16 @@ public class Converter
 	protected <T> JSONArray toJSONArray(T[] tarray)
 	{
 		JSONArray array = new JSONArray();
-		array.setNode(toArrayList(tarray)); 
+		ArrayList<Object> node = toArrayList(tarray);
+		if(Validator.isValid(node)) array.setNode(node); 
 		return array;
 	}
 	
-	protected <T> JSONArray toJSONArray(List<T> list)
+	protected <T> JSONArray toJSONArray(List<T> tlist)
 	{
 		JSONArray array = new JSONArray();
-		array.setNode(toArrayList(list)); 
+		ArrayList<Object> node = toArrayList(tlist);
+		if(Validator.isValid(node)) array.setNode(node);
 		return array;
 	}
 	

@@ -1,5 +1,7 @@
 package iahmadgad.json;
 
+import java.util.ArrayList;
+
 public class Validator 
 {
 	protected Validator()
@@ -14,6 +16,15 @@ public class Validator
 		else if(isDouble(object)) return "Double";
 		else if(isInteger(object)) return "Integer";
 		return null;
+	}
+	
+	protected static boolean isValid(ArrayList<Object> list)
+	{
+		for(int i = 0; i < list.size(); i++)
+		{
+			if(!isValid(list.get(i))) return false;
+		}
+		return true;
 	}
 	
 	protected static boolean isValid(Object object)
