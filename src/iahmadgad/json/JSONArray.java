@@ -5,31 +5,31 @@ import java.util.List;
 
 public class JSONArray 
 {
-	private ArrayList<Object> array;
+	private ArrayList<Object> node;
 	
 	public JSONArray()
 	{
-		array = new ArrayList<Object>();
+		node = new ArrayList<Object>();
 	}
 	
 	public JSONArray(String text)
 	{
-		array = new JSONParser(text).getArrayList();
+		node = new JSONParser(text).getArrayList();
 	}
 	
 	public <T> JSONArray(T[] array)
 	{
-		this.array = new Converter().toJSONArray(array).getNode();
+		node = new Converter().toJSONArray(array).getNode();
 	}
 	
 	public <T> JSONArray(List<T> list)
 	{
-		this.array = new Converter().toJSONArray(list).getNode();
+		node = new Converter().toJSONArray(list).getNode();
 	}
 	
 	public Object[] toArray()
 	{
-		return array.toArray();
+		return node.toArray();
 	}
 	
 	public String[] toStringArray()
@@ -74,67 +74,67 @@ public class JSONArray
 	
 	public ArrayList<Object> getNode()
 	{
-		return array;
+		return node;
 	}
 	
 	protected void setNode(ArrayList<Object> array)
 	{
-		this.array = array; 
+		this.node = array; 
 	}
 	
 	public int size()
 	{
-		return array.size();
+		return node.size();
 	}
 	
 	public <T> T[] toArray(T[] a)
 	{
-		return array.toArray(a);
+		return node.toArray(a);
 	}
 	
 	public void add(Object object)
 	{
-		if(Validator.isValid(object)) array.add(object);
+		if(Validator.isValid(object)) node.add(object);
 	}
 	
 	public void set(int index, Object object)
 	{
-		if(Validator.isValid(object)) array.set(index, object);
+		if(Validator.isValid(object)) node.set(index, object);
 	}
 	
 	public Object get(int index)
 	{
-		return array.get(index);
+		return node.get(index);
 	}
 	
 	public String getString(int index)
 	{
-		return (String) array.get(index);
+		return (String) node.get(index);
 	}
 	
 	public boolean getBoolean(int index)
 	{
-		return (boolean) array.get(index);
+		return (boolean) node.get(index);
 	}
 	
 	public int getInt(int index)
 	{
-		return (int) array.get(index);
+		return (int) node.get(index);
 	}
 	
 	public double getDouble(int index)
 	{
-		return (double) array.get(index);
+		return (double) node.get(index);
 	}
 	
 	public JSONObject getJSONObject(int index)
 	{
-		return (JSONObject) array.get(index);
+		return (JSONObject) node.get(index);
 	}
 	
 	public JSONArray getJSONArray(int index)
 	{
-		return (JSONArray) array.get(index);
+		return (JSONArray) node.get(index);
 	}
 	
 	public Object get(JSONPointer pointer)

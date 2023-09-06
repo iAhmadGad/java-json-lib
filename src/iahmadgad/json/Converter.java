@@ -54,12 +54,13 @@ public class Converter
 		return fieldValue;
 	}
 	
-	protected <T> JSONObject toJSONObject(Class<T> c, T tobject)
+	protected <T> JSONObject toJSONObject(Class<?> c, T tobject)
 	{
 		JSONObject object = new JSONObject();
-		Field fields[] = c.getClass().getDeclaredFields();
+		Field fields[] = tobject.getClass().getDeclaredFields();
 		for(Field field: fields)
 		{
+			field.setAccessible(true);
 			try 
 			{
 				object.put(field.getName(), getPairValue(field, field.get(tobject)));
@@ -74,7 +75,7 @@ public class Converter
 	private Object getPairValue(Field field, Object fieldValue)
 	{
 		if(field.getType().toString().contains("[")) return toArrayList((Object[]) fieldValue);
-		else if(field.getType().toString().compareTo("interface java.util.List") == 0) return toArrayList((List<Object>) fieldValue);
+		else if(field.getType().toString().compareTo("interface java.util.List") == 0) return toJSONArray((List<Object>) fieldValue);
 		else return fieldValue;
 	}
 	

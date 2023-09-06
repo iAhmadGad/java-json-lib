@@ -7,26 +7,26 @@ import java.util.Set;
 
 public class JSONObject 
 {
-	private HashMap<String, Object> object;
+	private HashMap<String, Object> node;
 	
 	public JSONObject()
 	{
-		object = new HashMap<String, Object>();
+		node = new HashMap<String, Object>();
 	}
 	
 	public JSONObject(String text)
 	{
-		object = new JSONParser(text).getHashMap();
+		node = new JSONParser(text).getHashMap();
 	}
 	
 	public JSONObject(File file)
 	{
-		object = new JSONParser(file).getHashMap();
+		node = new JSONParser(file).getHashMap();
 	}
 	
-	public <T> JSONObject(Class<T> c, T object)
+	public <T> JSONObject(T object)
 	{
-		this.object = new Converter().toJSONObject(c, object).getNode();
+		node = new Converter().toJSONObject(object.getClass(), object).getNode();
 	}
 	
 	public <T> T toClass(Class<T> c)
@@ -36,57 +36,57 @@ public class JSONObject
 	
 	public HashMap<String, Object> getNode()
 	{
-		return object;
+		return node;
 	}
 	
 	public Set<Entry<String, Object>> entrySet()
 	{
-		return object.entrySet();
+		return node.entrySet();
 	}
 	
 	public void put(String key, Object value)
 	{
-		if(Validator.isValid(value)) object.put(key, value);
+		if(Validator.isValid(value)) node.put(key, value);
 	}
 	
 	public void replace(String key, Object value)
 	{
-		if(Validator.isValid(value)) object.replace(key, value);
+		if(Validator.isValid(value)) node.replace(key, value);
 	}
 	
 	public Object get(String key)
 	{
-		return object.get(key);
+		return node.get(key);
 	}
 	
 	public String getString(String key)
 	{
-		return (String) object.get(key);
+		return (String) node.get(key);
 	}
 	
 	public boolean getBoolean(String key)
 	{
-		return (boolean) object.get(key);
+		return (boolean) node.get(key);
 	}
 	
 	public int getInt(String key)
 	{
-		return (int) object.get(key);
+		return (int) node.get(key);
 	}
 	
 	public double getDouble(String key)
 	{
-		return (double) object.get(key);
+		return (double) node.get(key);
 	}
 	
 	public JSONObject getJSONObject(String key)
 	{
-		return (JSONObject) object.get(key);
+		return (JSONObject) node.get(key);
 	}
 	
 	public JSONArray getJSONArray(String key)
 	{
-		return (JSONArray) object.get(key);
+		return (JSONArray) node.get(key);
 	}
 	
 	public Object get(JSONPointer pointer)
