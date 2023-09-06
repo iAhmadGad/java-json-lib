@@ -35,6 +35,7 @@ public class JSONArray
 	
 	/**
 	 * The Constructor which creates a new JSONArray from a text.
+	 * 
 	 * @param Source JSON string (text)
 	 */
 	public JSONArray(String text)
@@ -44,6 +45,7 @@ public class JSONArray
 	
 	/**
 	 * The Constructor which creates a new JSONArray from a Java array (with valid values only as mentioned above).
+	 * 
 	 * @param Source Java Array
 	 */
 	public <T> JSONArray(T[] array)
@@ -53,6 +55,7 @@ public class JSONArray
 	
 	/**
 	 * The Constructor which creates a new JSONArray from a Java list (with valid values only as mentioned above).
+	 * 
 	 * @param Source Java List
 	 */
 	public <T> JSONArray(List<T> list)
@@ -62,6 +65,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java array.
+	 * 
 	 * @return An array of objects (only valid)
 	 */
 	public Object[] toArray()
@@ -71,6 +75,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java String array.
+	 * 
 	 * @return An array of Strings
 	 */
 	public String[] toStringArray()
@@ -80,6 +85,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java boolean array.
+	 * 
 	 * @return An array of booleans
 	 */
 	public boolean[] toBooleanArray()
@@ -89,6 +95,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java int array.
+	 * 
 	 * @return An array of ints
 	 */
 	public int[] toIntArray()
@@ -98,6 +105,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java double array.
+	 * 
 	 * @return An array of doubles
 	 */
 	public double[] toDoubleArray()
@@ -107,6 +115,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java list.
+	 * 
 	 * @return A list of Objects (only valid)
 	 */
 	public List<Object> toList()
@@ -116,6 +125,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java String list.
+	 * 
 	 * @return A list of Strings
 	 */
 	public List<String> toStringList()
@@ -125,6 +135,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java boolean String list.
+	 * 
 	 * @return A list of booleans
 	 */
 	public List<Boolean> toBooleanList()
@@ -134,6 +145,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java Integer list.
+	 * 
 	 * @return A list of Integers
 	 */
 	public List<Integer> toIntegerList()
@@ -143,6 +155,7 @@ public class JSONArray
 	
 	/**
 	 * Converts JSONArray to a Java Double list.
+	 * 
 	 * @return A list of Doubles
 	 */
 	public List<Double> toDoubleList()
@@ -152,6 +165,7 @@ public class JSONArray
 	
 	/**
 	 * Returns the main ArrayList that stores JSONArray values.
+	 * 
 	 * @return {@link #node}
 	 */
 	public ArrayList<Object> getNode()
@@ -166,6 +180,7 @@ public class JSONArray
 	
 	/**
 	 * Returns the size of the main ArrayList that stores JSONArray values.
+	 * 
 	 * @return the size of the main ArrayList
 	 */
 	public int size()
@@ -175,6 +190,7 @@ public class JSONArray
 	
 	/**
 	 * Converts the JSONArray to a Java array.
+	 * 
 	 * @param Java array
 	 * @return An array of the same type
 	 */
@@ -185,6 +201,7 @@ public class JSONArray
 	
 	/**
 	 * Appends the specified value to the end of the JSONArray.
+	 * 
 	 * @param value
 	 */
 	public void add(Object value)
@@ -193,8 +210,10 @@ public class JSONArray
 	}
 	
 	/**
-	 * Replaces the value in the specified position with the the specified value
-	 * @param index, value
+	 * Replaces the value in the specified position with the the specified value.
+	 * 
+	 * @param index
+	 * @param value
 	 */
 	public void set(int index, Object value)
 	{
@@ -203,8 +222,9 @@ public class JSONArray
 	
 	/**
 	 * Gets Object in this index.
+	 * 
 	 * @param index
-	 * @return Object
+	 * @return Object value
 	 */
 	public Object get(int index)
 	{
@@ -213,8 +233,9 @@ public class JSONArray
 	
 	/**
 	 * Gets String in this index.
+	 * 
 	 * @param index
-	 * @return String
+	 * @return String value
 	 */
 	public String getString(int index)
 	{
@@ -223,8 +244,9 @@ public class JSONArray
 	
 	/**
 	 * Gets boolean in this index.
+	 * 
 	 * @param index
-	 * @return boolean
+	 * @return boolean value
 	 */
 	public boolean getBoolean(int index)
 	{
@@ -233,8 +255,9 @@ public class JSONArray
 	
 	/**
 	 * Gets int in this index.
+	 * 
 	 * @param index
-	 * @return int
+	 * @return int value
 	 */
 	public int getInt(int index)
 	{
@@ -243,8 +266,9 @@ public class JSONArray
 	
 	/**
 	 * Gets double in this index.
+	 * 
 	 * @param index
-	 * @return double
+	 * @return double value
 	 */
 	public double getDouble(int index)
 	{
@@ -253,8 +277,9 @@ public class JSONArray
 	
 	/**
 	 * Gets JSONObject in this index.
+	 * 
 	 * @param index
-	 * @return JSONObject
+	 * @return JSONObject value
 	 */
 	public JSONObject getJSONObject(int index)
 	{
@@ -263,8 +288,9 @@ public class JSONArray
 	
 	/**
 	 * Gets JSONArray in this index.
+	 * 
 	 * @param index
-	 * @return JSONArray
+	 * @return JSONArray value
 	 */
 	public JSONArray getJSONArray(int index)
 	{
@@ -273,8 +299,9 @@ public class JSONArray
 	
 	/**
 	 * Gets Object in this pointer.
+	 * 
 	 * @param pointer
-	 * @return Object
+	 * @return Object value
 	 */
 	public Object get(JSONPointer pointer)
 	{
@@ -284,8 +311,9 @@ public class JSONArray
 	
 	/**
 	 * Gets String in this pointer.
+	 * 
 	 * @param pointer
-	 * @return String
+	 * @return String value
 	 */
 	public String getString(JSONPointer pointer)
 	{
@@ -295,8 +323,9 @@ public class JSONArray
 	
 	/**
 	 * Gets boolean in this pointer.
+	 * 
 	 * @param pointer
-	 * @return boolean
+	 * @return boolean value
 	 */
 	public boolean getBoolean(JSONPointer pointer)
 	{
@@ -306,8 +335,9 @@ public class JSONArray
 	
 	/**
 	 * Gets int in this pointer.
+	 * 
 	 * @param pointer
-	 * @return int
+	 * @return int value
 	 */
 	public int getInt(JSONPointer pointer)
 	{
@@ -317,8 +347,9 @@ public class JSONArray
 	
 	/**
 	 * Gets double in this pointer.
+	 * 
 	 * @param pointer
-	 * @return double
+	 * @return double value
 	 */
 	public double getDouble(JSONPointer pointer)
 	{
@@ -328,8 +359,9 @@ public class JSONArray
 	
 	/**
 	 * Gets JSONObject in this pointer.
+	 * 
 	 * @param pointer
-	 * @return JSONObject
+	 * @return JSONObject value
 	 */
 	public JSONObject getJSONObject(JSONPointer pointer)
 	{
@@ -339,8 +371,9 @@ public class JSONArray
 	
 	/**
 	 * Gets JSONArray in this pointer.
+	 * 
 	 * @param pointer
-	 * @return JSONArray
+	 * @return JSONArray value
 	 */
 	public JSONArray getJSONArray(JSONPointer pointer)
 	{

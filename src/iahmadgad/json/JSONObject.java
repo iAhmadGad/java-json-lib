@@ -33,6 +33,7 @@ public class JSONObject
 	 * <p>
 	 * equals null in default.
 	 * to change its value you should put pair ("$id" - String) into the JSONObject.
+	 * 
 	 * @see #put(String, Object)
 	 */
 	private String id = null;
@@ -47,6 +48,7 @@ public class JSONObject
 	
 	/**
 	 * The Constructor which creates a new JSONObject from a text.
+	 * 
 	 * @param Source JSON string (text)
 	 */
 	public JSONObject(String text)
@@ -56,6 +58,7 @@ public class JSONObject
 	
 	/**
 	 * The Constructor which creates a new JSONObject from a file.
+	 * 
 	 * @param Source JSON file
 	 */
 	public JSONObject(File file)
@@ -67,6 +70,7 @@ public class JSONObject
 	 * The Constructor which creates a new JSONObject from a Java object.
 	 * <p>
 	 * it creates pairs from the object's fields as variables, arrays & lists (with valid values only as mentioned above).
+	 * 
 	 * @param Source Java object
 	 */
 	public <T> JSONObject(T object)
@@ -78,6 +82,7 @@ public class JSONObject
 	 * Converts the JSONObject to a Java Object.
 	 * <p>
 	 * it takes JSONObject keys & assign their values to the object fields which the same name as the key.
+	 * 
 	 * @param Java object class
 	 * @return An Object of the same class
 	 */
@@ -88,6 +93,7 @@ public class JSONObject
 	
 	/**
 	 * Returns the main HashMap that stores JSONObject pairs.
+	 * 
 	 * @return {@link #node}
 	 */
 	public HashMap<String, Object> getNode()
@@ -97,6 +103,7 @@ public class JSONObject
 	
 	/**
 	 * Returns JSONObject id.
+	 * 
 	 * @return {@link #id}
 	 */
 	public String getId()
@@ -106,6 +113,7 @@ public class JSONObject
 	
 	/**
 	 * Iterates over the whole JSONObjects entries.
+	 * 
 	 * @return Set of entries
 	 */
 	public Set<Entry<String, Object>> entrySet()
@@ -115,7 +123,9 @@ public class JSONObject
 	
 	/**
 	 * Puts pair into the JSONObject.
-	 * @param key, value
+	 * 
+	 * @param key
+	 * @param value
 	 */
 	public void put(String key, Object value)
 	{
@@ -125,7 +135,9 @@ public class JSONObject
 	
 	/**
 	 * Replaces existing key's value in the JSONObject.
-	 * @param key, value
+	 * 
+	 * @param key
+	 * @param value
 	 */
 	public void replace(String key, Object value)
 	{
@@ -134,8 +146,9 @@ public class JSONObject
 	
 	/**
 	 * Gets Object stored in this key.
+	 * 
 	 * @param key
-	 * @return Object
+	 * @return Object value
 	 */
 	public Object get(String key)
 	{
@@ -144,8 +157,9 @@ public class JSONObject
 	
 	/**
 	 * Gets String stored in this key.
+	 * 
 	 * @param key
-	 * @return String
+	 * @return String value
 	 */
 	public String getString(String key)
 	{
@@ -154,8 +168,9 @@ public class JSONObject
 	
 	/**
 	 * Gets boolean stored in this key.
+	 * 
 	 * @param key
-	 * @return boolean
+	 * @return boolean value
 	 */
 	public boolean getBoolean(String key)
 	{
@@ -164,8 +179,9 @@ public class JSONObject
 	
 	/**
 	 * Gets int stored in this key.
+	 * 
 	 * @param key
-	 * @return int
+	 * @return int value
 	 */
 	public int getInt(String key)
 	{
@@ -174,8 +190,9 @@ public class JSONObject
 	
 	/**
 	 * Gets double stored in this key.
+	 * 
 	 * @param key
-	 * @return double
+	 * @return double value
 	 */
 	public double getDouble(String key)
 	{
@@ -184,8 +201,9 @@ public class JSONObject
 	
 	/**
 	 * Gets nested JSONObject stored in this key.
+	 * 
 	 * @param key
-	 * @return JSONObject
+	 * @return JSONObject value
 	 */
 	public JSONObject getJSONObject(String key)
 	{
@@ -194,8 +212,9 @@ public class JSONObject
 	
 	/**
 	 * Gets nested JSONArray stored in this key.
+	 * 
 	 * @param key
-	 * @return JSONArray
+	 * @return JSONArray value
 	 */
 	public JSONArray getJSONArray(String key)
 	{
@@ -204,8 +223,9 @@ public class JSONObject
 	
 	/**
 	 * Gets object stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return Object
+	 * @return Object value
 	 */
 	public Object get(JSONPointer pointer)
 	{
@@ -215,8 +235,9 @@ public class JSONObject
 	
 	/**
 	 * Gets String stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return String
+	 * @return String value
 	 */
 	public String getString(JSONPointer pointer)
 	{
@@ -226,8 +247,9 @@ public class JSONObject
 	
 	/**
 	 * Gets boolean stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return boolean
+	 * @return boolean value
 	 */
 	public boolean getBoolean(JSONPointer pointer)
 	{
@@ -237,8 +259,9 @@ public class JSONObject
 	
 	/**
 	 * Gets int stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return int
+	 * @return int value
 	 */
 	public int getInt(JSONPointer pointer)
 	{
@@ -248,8 +271,9 @@ public class JSONObject
 	
 	/**
 	 * Gets double stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return double
+	 * @return double value
 	 */
 	public double getDouble(JSONPointer pointer)
 	{
@@ -259,8 +283,9 @@ public class JSONObject
 	
 	/**
 	 * Gets JSONObject stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return JSONObject
+	 * @return JSONObject value
 	 */
 	public JSONObject getJSONObject(JSONPointer pointer)
 	{
@@ -270,8 +295,9 @@ public class JSONObject
 	
 	/**
 	 * Gets JSONArray stored in this pointer.
+	 * 
 	 * @param pointer
-	 * @return JSONArray
+	 * @return JSONArray value
 	 */
 	public JSONArray getJSONArray(JSONPointer pointer)
 	{
