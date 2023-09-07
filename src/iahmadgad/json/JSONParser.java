@@ -20,11 +20,37 @@ import java.util.Scanner;
 
 public class JSONParser 
 {
+	/**
+	 * The given source to be parsed.
+	 * 
+	 * @see #JSONParser(String)
+	 * @see #readFile(File)
+	 */
 	private static String source = "";
+	
+	/**
+	 * The source after deleting spaces and new lines.
+	 * 
+	 * @see #lineSource()
+	 */
 	private static String line = "";
+	
+	/**
+	 * The main JSONObject the source presents (in case it presents a JSONObject).
+	 */
 	private static JSONObject object = new JSONObject();
+	
+	/**
+	 * The main JSONArray the source presents (in case it presents a JSONArray).
+	 */
 	private static JSONArray array = new JSONArray();
 	
+	/**
+	 * Constructor that parses the node from a text.
+	 * 
+	 * @param text
+	 * @see #parse()
+	 */
 	protected JSONParser(String text)
 	{
 		source = text;
@@ -32,6 +58,13 @@ public class JSONParser
 		parse();
 	}
 	
+	/**
+	 * Constructor that parses the node from a file.
+	 * 
+	 * @param file
+	 * @see #readFile(File)
+	 * @see #parse()
+	 */
 	protected JSONParser(File file)
 	{
 		readFile(file);
@@ -39,17 +72,32 @@ public class JSONParser
 		parse();
 	}
 	
+	/**
+	 * Returns the main JSONObject node.
+	 * 
+	 * @return the main JSONObject node
+	 */
 	protected HashMap<String, Object> getHashMap()
 	{
 		return object.getNode();
 	}
 	
+	/**
+	 * Returns the main JSONArray node.
+	 * 
+	 * @return the main JSONArray node.
+	 */
 	protected ArrayList<Object> getArrayList()
 	{
 		return array.getNode();
 	}
 	
-	protected static void readFile(File file)
+	/**
+	 * Reads JSON source from a file.
+	 * 
+	 * @param file
+	 */
+	private static void readFile(File file)
 	{
 		try 
 		{
@@ -66,6 +114,11 @@ public class JSONParser
 		}
 	}
 	
+	/**
+	 * Deletes spaces & new lines from the source.
+	 * 
+	 * @see #line
+	 */
 	private static void lineSource()
 	{
 		boolean avoidSpaceAndNewLine = true;
@@ -78,6 +131,9 @@ public class JSONParser
 		}
 	}
 	
+	/**
+	 * Determines if the source presents a JSONObject or a JSONArray then uses the appropriate method to parse it.
+	 */
 	private static void parse()
 	{
 		if(line.charAt(0) == '{')
@@ -94,6 +150,15 @@ public class JSONParser
 		}
 	}
 	
+	/**
+	 * Parses JSONObject from the source text.
+	 * <p>
+	 * It uses recursion when there is another JSONObject or JSONArray nested in it & calls another method to parse it.
+	 * 
+	 * @param text
+	 * @return parsed JSONObject
+	 * @see #parseJSONArray(String)
+	 */
 	private static JSONObject parseJSONObject(String text)
 	{
 		JSONObject object = new JSONObject();
@@ -149,6 +214,15 @@ public class JSONParser
 		return object;
 	}
 	
+	/**
+	 * Parses JSONObject from the source text.
+	 * <p>
+	 * It uses recursion when there is another JSONArray or JSONObject nested in it & calls another method to parse it.
+	 * 
+	 * @param text
+	 * @return parsed JSONArray
+	 * @see #parseJSONObject(String)
+	 */
 	private static JSONArray parseJSONArray(String text)
 	{
 		JSONArray array = new JSONArray();

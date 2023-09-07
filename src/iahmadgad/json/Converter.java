@@ -21,6 +21,14 @@ import java.util.stream.Collectors;
 
 public class Converter 
 {
+	/**
+	 * Converts JSONObject to Java object.
+	 * 
+	 * @param <T>
+	 * @param object
+	 * @param c
+	 * @return converted Java object
+	 */
 	protected <T> T toClass(JSONObject object, Class<T> c)
 	{
 		T type = null;
@@ -49,6 +57,13 @@ public class Converter
 		return type;
 	}
 	
+	/**
+	 * Gets specified field value in Java object.
+	 * 
+	 * @param field
+	 * @param fieldValue
+	 * @return field value
+	 */
 	private Object getFieldValue(Field field, Object fieldValue)
 	{
 		if(field.getType().toString().compareTo("class [Ljava.lang.Object;") == 0) return toArray((JSONArray) fieldValue);
@@ -66,6 +81,14 @@ public class Converter
 		return fieldValue;
 	}
 	
+	/**
+	 * Converts Java object to JSONObject.
+	 * 
+	 * @param <T>
+	 * @param c
+	 * @param tobject
+	 * @return converted JSONObject
+	 */
 	protected <T> JSONObject toJSONObject(Class<?> c, T tobject)
 	{
 		JSONObject object = new JSONObject();
@@ -84,6 +107,13 @@ public class Converter
 		return object;
 	}
 	
+	/**
+	 * Gets specified pair value in JSONObject.
+	 * 
+	 * @param field
+	 * @param fieldValue
+	 * @return pair value
+	 */
 	private Object getPairValue(Field field, Object fieldValue)
 	{
 		if(field.getType().toString().contains("[")) return toArrayList((Object[]) fieldValue);
@@ -91,6 +121,13 @@ public class Converter
 		else return fieldValue;
 	}
 	
+	/**
+	 * Converts array to JSONArray.
+	 * 
+	 * @param <T>
+	 * @param tarray
+	 * @return converted JSONArray
+	 */
 	protected <T> JSONArray toJSONArray(T[] tarray)
 	{
 		JSONArray array = new JSONArray();
@@ -99,6 +136,13 @@ public class Converter
 		return array;
 	}
 	
+	/**
+	 * Converts list to JSONArray.
+	 * 
+	 * @param <T>
+	 * @param tlist
+	 * @return converted JSONArray
+	 */
 	protected <T> JSONArray toJSONArray(List<T> tlist)
 	{
 		JSONArray array = new JSONArray();
@@ -107,16 +151,34 @@ public class Converter
 		return array;
 	}
 	
+	/**
+	 * Converts JSONArray to array.
+	 * 
+	 * @param array
+	 * @return converted array
+	 */
 	protected Object[] toArray(JSONArray array)
 	{
 		return array.toArray();
 	}
 	
+	/**
+	 * Converts JSONArray to array of Strings
+	 * 
+	 * @param array
+	 * @return converted array of Strings
+	 */
 	protected String[] toStringArray(JSONArray array)
 	{
 		return array.toArray(new String[0]);
 	}
 	
+	/**
+	 * Converts JSONArray to array of booleans.
+	 * 
+	 * @param array
+	 * @return converted array of booleans
+	 */
 	protected boolean[] toBooleanArray(JSONArray array)
 	{
 		Boolean temp1[] = array.toArray(new Boolean[0]);
@@ -125,6 +187,12 @@ public class Converter
 		return temp2;
 	}
 	
+	/**
+	 * Converts JSONArray to array of doubles.
+	 * 
+	 * @param array
+	 * @return converted array of doubles
+	 */
 	protected double[] toDoubleArray(JSONArray array)
 	{
 		Double temp1[] = array.toArray(new Double[0]);
@@ -133,6 +201,12 @@ public class Converter
 		return temp2;
 	}
 	
+	/**
+	 * Converts JSONArray to array of ints.
+	 * 
+	 * @param array
+	 * @return converted array of ints
+	 */
 	protected int[] toIntArray(JSONArray array)
 	{
 		Integer temp1[] = array.toArray(new Integer[0]);
@@ -141,11 +215,23 @@ public class Converter
 		return temp2;
 	}
 	
+	/**
+	 * Converts JSONArray to list
+	 * 
+	 * @param array
+	 * @return converted list
+	 */
 	protected List<Object> toList(JSONArray array)
 	{
 		return array.getNode();
 	}
 	
+	/**
+	 * Converts JSONArray to list of Strings
+	 * 
+	 * @param array
+	 * @return converted list of Strings
+	 */
 	protected List<String> toStringList(JSONArray array)
 	{
 		ArrayList<Object> arrayList = array.getNode();
@@ -153,6 +239,12 @@ public class Converter
 		return list;
 	}
 	
+	/**
+	 * Converts JSONArray to list of Booleans
+	 * 
+	 * @param array
+	 * @return converted list of Booleans
+	 */
 	protected List<Boolean> toBooleanList(JSONArray array)
 	{
 		ArrayList<Object> arrayList = array.getNode();
@@ -160,6 +252,12 @@ public class Converter
 		return list;
 	}
 	
+	/**
+	 * Converts JSONArray to list of Doubles.
+	 * 
+	 * @param array
+	 * @return converted list of Doubles
+	 */
 	protected List<Double> toDoubleList(JSONArray array)
 	{
 		ArrayList<Object> arrayList = array.getNode();
@@ -167,6 +265,12 @@ public class Converter
 		return list;
 	}
 	
+	/**
+	 * Converts JSONArray to list of Integers.
+	 * 
+	 * @param array
+	 * @return converted list of Integers
+	 */
 	protected List<Integer> toIntegerList(JSONArray array)
 	{
 		ArrayList<Object> arrayList = array.getNode();
@@ -174,11 +278,25 @@ public class Converter
 		return list;
 	}
 	
+	/**
+	 * Converts array to ArrayList.
+	 * 
+	 * @param <T>
+	 * @param array
+	 * @return converted ArrayList
+	 */
 	protected <T> ArrayList<Object> toArrayList(T[] array)
 	{
 		return new ArrayList<>(Arrays.asList(array));
 	}
 	
+	/**
+	 * Converts list to ArrayList.
+	 * 
+	 * @param <T>
+	 * @param list
+	 * @return converted ArrayList
+	 */
 	protected <T> ArrayList<Object> toArrayList(List<T> list)
 	{
 		return (ArrayList<Object>) list;

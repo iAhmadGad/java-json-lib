@@ -68,14 +68,9 @@ public class JSONStringBuilder
 	}
 	
 	/**
-	 * indentation  
+	 * Indentation & space around colon.
 	 */
-	private int indentation;
-	
-	/**
-	 * Space around colon
-	 */
-	private int spaceAroundColon;
+	private int indentation, spaceAroundColon;
 	
 	/**
 	 * Returns The String of the JSONObject or the JSONArray.
@@ -92,8 +87,24 @@ public class JSONStringBuilder
 		return JSONString;
 	}
 	
+	/**
+	 * A counter to know if value is the first value in ther JSONObject or the JSONArray.
+	 * 
+	 * @see #build(JSONObject, int)
+	 * @see #build(JSONArray, int)
+	 */
 	private static byte counter = 0;
 	
+	/**
+	 * Builds the JSONObject String.
+	 * <p>
+	 * It uses the int i to determine the indentation level when building the String, 
+	 * & it uses recursion when there is another JSONObject or a JSONArray nested in it & recalls the method build again to build the nested node with indentation level of (i + 1).
+	 * 
+	 * @param object
+	 * @param i
+	 * @see #build(JSONArray, int)
+	 */
 	private void build(JSONObject object, int i)
 	{
 		JSONString += getIndentation(i) + "{\n";
@@ -122,6 +133,16 @@ public class JSONStringBuilder
 		JSONString += getIndentation(i) + "}\n";
 	}
 	
+	/**
+	 * Builds the JSONArray String.
+	 * <p>
+	 * It uses the int i to determine the indentation level when building the String, 
+	 * & it uses recursion when there is another JSONArray or JSONObject nested in it & recalls the method build again to build the nested node with indentation level of (i + 1).
+	 * 
+	 * @param array
+	 * @param i
+	 * @see #build(JSONObject, int)
+	 */
 	private void build(JSONArray array, int i)
 	{
 		JSONString += getIndentation(i);
@@ -146,6 +167,14 @@ public class JSONStringBuilder
 		JSONString += getIndentation(i) + "]\n";
 	}
 	
+	/**
+	 * Returns indentation String.
+	 * <p>
+	 * consists of (i * indentation level) spaces.
+	 * 
+	 * @param i
+	 * @return indentation String
+	 */
 	private String getIndentation(int i)
 	{
 		String string = "";
@@ -153,6 +182,11 @@ public class JSONStringBuilder
 		return string;
 	}
 	
+	/**
+	 * Returns space around colon (:).
+	 * 
+	 * @return space around colon
+	 */
 	private String getSpaceAroundColon()
 	{
 		String string = "";

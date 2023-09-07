@@ -79,24 +79,42 @@ public class JSONPointer
 		JSONPointer.path = path;
 	}
 	
+	/**
+	 * Sets the main node (JSONObject) of the JSONPointer.
+	 * 
+	 * @param node
+	 */
 	protected void setNode(JSONArray node)
 	{
 		array = node;
 		object = null;
 	}
 	
+	/**
+	 * Sets the main node (JSONArray) of the JSONPointer.
+	 * 
+	 * @param node
+	 */
 	protected void setNode(JSONObject node)
 	{
 		object = node;
 		array = null;
 	}
 	
+	/**
+	 * Gets the pointee (object) stored in this JSONPointer.
+	 * 
+	 * @return
+	 */
 	protected Object getPointee()
 	{
 		findPointee();
 		return pointee;
 	}
 	
+	/**
+	 * Finds the pointee (object) stored in this JSONPointer.
+	 */
 	private static void findPointee()
 	{
 		String[] locations = pathLocations();
@@ -117,6 +135,11 @@ public class JSONPointer
 		pointee = current;
 	}
 	
+	/**
+	 * Parses the given path & splits it to an array of Strings presenting path locations.
+	 * 
+	 * @return an array of Strings presenting path locations
+	 */
 	private static String[] pathLocations()
 	{
 		path = (object.getId() != null && path.contains("#")) ? path.substring(object.getId().length() + 2) : path;
