@@ -220,6 +220,16 @@ public class JSONObject
 	}
 	
 	/**
+	 * Remove this key and value stored in it.
+	 * 
+	 * @param key
+	 */
+	public void remove(String key)
+	{
+		node.remove(key);
+	}
+	
+	/**
 	 * Replaces existing key's value in the JSONObject.
 	 * 
 	 * @param key

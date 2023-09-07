@@ -287,6 +287,16 @@ public class JSONArray
 	}
 	
 	/**
+	 * Removes the value stored in this index.
+	 * 
+	 * @param index
+	 */
+	public void remove(int index)
+	{
+		node.remove(index);
+	}
+	
+	/**
 	 * Replaces the value in the specified position with the the specified value.
 	 * 
 	 * @param index
