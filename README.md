@@ -10,7 +10,7 @@ A simple Java package that Handles JSON. ☕
 ## 🤔 How to use
 - Download the latest release from [**here**](https://github.com/iAhmadGad/Java-JSON-Handler/releases).
 - Add package to your build using command-line, or your IDE like Eclipse or Netbeans.
-- Here you are! Start making JSONObjects & JSONArrays, read them, write them & even extract them to some Java Arrays & Objects.
+- Here you are! Start making JSONObjects & JSONArrays, read them, write them & even extract them to Java Arrays & Objects.
 
 Here is an example on how to make a new JSONObject:
 ```
@@ -31,10 +31,9 @@ And you can put this array in the JSONObject you`ve just created:
 ```
 obj.put("THINGS I LOVE", arr);
 ```
-And last but Not least write this JSONObject in some JSON file with JSONStringBuilder:
+And last but Not least write this JSONObject in a JSON file:
 ```
-JSONStringBuilder builder = new JSONStringBuilder(obj);
-builder.write(new File("User-info.json"));
+obj.write(new File("User-info.json"));
 ```
 And here is your JSON file:
 ```
