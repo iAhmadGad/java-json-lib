@@ -164,6 +164,70 @@ public class JSONArray
 	}
 	
 	/**
+	 * Indentation & space around colon in the String.
+	 */
+	protected int indentation = 3, spaceAroundColon = 0;
+	
+	/**
+	 * Returns a string representation of the JSONArray.
+	 */
+	public String toString()
+	{
+		return new JSONStringBuilder(this, indentation, spaceAroundColon).getJSONString();
+	}
+	
+	/**
+	 * Sets indentation with some int value.
+	 * 
+	 * @param i
+	 */
+	public void setIndentation(int i)
+	{
+		indentation = i;
+	}
+	
+	/**
+	 * Sets indentation with some Enum value.
+	 * 
+	 * @param e
+	 */
+	public void setIndentation(JSONEnum e)
+	{
+		if (e == JSONEnum.DEFAULT) indentation = 5;
+		else if(e == JSONEnum.NONE) indentation = 0;
+	}
+	
+	/**
+	 * Sets space around colon with some int value.
+	 * 
+	 * @param i
+	 */
+	public void setSpaceAroundColon(int i)
+	{
+		spaceAroundColon = i;
+	}
+	
+	/**
+	 * Sets space around colon with some Enum value.
+	 * 
+	 * @param e
+	 */
+	public void setSpaceAroundColon(JSONEnum e)
+	{
+		if (e == JSONEnum.DEFAULT) spaceAroundColon = 0;
+		else if(e == JSONEnum.NONE) spaceAroundColon = 0;
+	}
+	
+	/**
+	 * Sets all String settings to their defaults.
+	 */
+	public void setStringDefault()
+	{
+		indentation = 3;
+		spaceAroundColon = 0;
+	}
+	
+	/**
 	 * Returns the main ArrayList that stores JSONArray values.
 	 * 
 	 * @return {@link #node}
@@ -207,6 +271,19 @@ public class JSONArray
 	public void add(Object value)
 	{
 		if(Validator.isValid(value)) node.add(value);
+	}
+	
+	/**
+	 * Appends the specified array to the end of the JSONArray.
+	 * 
+	 * @param value
+	 */
+	public <T> void addAll(T[] array)
+	{
+		for(int i = 0; i < array.length; i++)
+		{
+			if(Validator.isValid(array[i])) node.add(array[i]);
+		}
 	}
 	
 	/**

@@ -5,6 +5,9 @@ package iahmadgad.json;
  */
 
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -89,6 +92,89 @@ public class JSONObject
 	public <T> T toClass(Class<T> c)
 	{
 		return new Converter().toClass(this, c);
+	}
+	
+	/**
+	 * Indentation & space around colon in the String.
+	 */
+	protected int indentation = 3, spaceAroundColon = 0;
+	
+	/**
+	 * Returns a string representation of the JSONObject.
+	 */
+	public String toString()
+	{
+		return new JSONStringBuilder(this, indentation, spaceAroundColon).getJSONString();
+	}
+	
+	/**
+	 * Writes the JSONObject in a file.
+	 * 
+	 * @param file
+	 */
+	public void write(File file)
+	{
+		try 
+		{
+			FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8);
+			writer.write(toString());
+			writer.close();
+		} 
+		catch (IOException e) 
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Sets indentation with some int value.
+	 * 
+	 * @param i
+	 */
+	public void setIndentation(int i)
+	{
+		indentation = i;
+	}
+	
+	/**
+	 * Sets indentation with some Enum value.
+	 * 
+	 * @param e
+	 */
+	public void setIndentation(JSONEnum e)
+	{
+		if (e == JSONEnum.DEFAULT) indentation = 5;
+		else if(e == JSONEnum.NONE) indentation = 0;
+	}
+	
+	/**
+	 * Sets space around colon with some int value.
+	 * 
+	 * @param i
+	 */
+	public void setSpaceAroundColon(int i)
+	{
+		spaceAroundColon = i;
+	}
+	
+	/**
+	 * Sets space around colon with some Enum value.
+	 * 
+	 * @param e
+	 */
+	public void setSpaceAroundColon(JSONEnum e)
+	{
+		if (e == JSONEnum.DEFAULT) spaceAroundColon = 0;
+		else if(e == JSONEnum.NONE) spaceAroundColon = 0;
+	}
+	
+	/**
+	 * Sets all String settings to their defaults.
+	 */
+	public void setStringDefault()
+	{
+		indentation = 3;
+		spaceAroundColon = 0;
 	}
 	
 	/**

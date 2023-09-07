@@ -24,8 +24,17 @@ public class JSONStringBuilder
 {
 	/**
 	 * The main JSONObject.
+	 * <p>
+	 * it equals null if JSONStringBuilder's node is JSONArray.
 	 */
 	private static JSONObject object;
+	
+	/**
+	 * The main JSONArray.
+	 * <p>
+	 * it equals null if JSONStringBuilder's node is JSONObject.
+	 */
+	private static JSONArray array;
 	
 	/**
 	 * The String of the JSONObject. 
@@ -33,21 +42,53 @@ public class JSONStringBuilder
 	private static String JSONString = "";
 	
 	/**
-	 * The main Constructor which assigns some JSONObject to the JSONStringBuilder.
-	 * @param object
+	 * The main Constructor which assigns a JSONObject to the JSONStringBuilder.
+	 * 
+	 * @param node
 	 */
-	public JSONStringBuilder(JSONObject object)
+	protected JSONStringBuilder(JSONObject node, int indentation, int spaceAroundColon)
 	{
-		JSONStringBuilder.object = object;
+		object = node;
+		array = null;
+		this.indentation = indentation;
+		this.spaceAroundColon = spaceAroundColon;
 	}
 	
 	/**
-	 * Returns The String of the JSONObject.
-	 * @return The String of the JSONObject
+	 * The main Constructor which assigns a JSONArray to the JSONStringBuilder.
+	 * 
+	 * @param node
 	 */
-	public String getJSONString()
+	protected JSONStringBuilder(JSONArray node, int indentation, int spaceAroundColon)
 	{
-		if(JSONString == "") build(object, 0);
+		array = node;
+		object = null;
+		this.indentation = indentation;
+		this.spaceAroundColon = spaceAroundColon;
+	}
+	
+	/**
+	 * indentation  
+	 */
+	private int indentation;
+	
+	/**
+	 * Space around colon
+	 */
+	private int spaceAroundColon;
+	
+	/**
+	 * Returns The String of the JSONObject or the JSONArray.
+	 * 
+	 * @return The String of the JSONObject or the JSONArray
+	 */
+	protected String getJSONString()
+	{
+		if(JSONString == "")
+		{
+			if(object == null) build(array, 0);
+			else build(object, 0);
+		}
 		return JSONString;
 	}
 	
@@ -105,47 +146,6 @@ public class JSONStringBuilder
 		JSONString += getIndentation(i) + "]\n";
 	}
 	
-	/**
-	 * Writes the JSONObjectString in a file.
-	 * @param file
-	 */
-	public void write(File file)
-	{
-		try 
-		{
-			FileWriter writer = new FileWriter(file, StandardCharsets.UTF_8);
-			writer.write(getJSONString());
-			writer.close();
-		} 
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-	}
-	
-	private int indentation = 5;
-	
-	private int spaceAroundColon = 0;
-	
-	/**
-	 * Sets indentation with some int value.
-	 * @param i
-	 */
-	public void setIndentation(int i)
-	{
-		indentation = i;
-	}
-	
-	/**
-	 * Sets indentation with some Enum value.
-	 * @param e
-	 */
-	public void setIndentation(SBEnum e)
-	{
-		if (e == SBEnum.DEFAULT) indentation = 5;
-		else if(e == SBEnum.NONE) indentation = 0;
-	}
-	
 	private String getIndentation(int i)
 	{
 		String string = "";
@@ -153,44 +153,10 @@ public class JSONStringBuilder
 		return string;
 	}
 	
-	/**
-	 * Sets space around colon with some int value.
-	 * @param i
-	 */
-	public void setSpaceAroundColon(int i)
-	{
-		spaceAroundColon = i;
-	}
-	
-	/**
-	 * Sets space around colon with some Enum value.
-	 * @param e
-	 */
-	public void setSpaceAroundColon(SBEnum e)
-	{
-		if (e == SBEnum.DEFAULT) spaceAroundColon = 0;
-		else if(e == SBEnum.NONE) spaceAroundColon = 0;
-	}
-	
 	private String getSpaceAroundColon()
 	{
 		String string = "";
 		for(int j = 0; j < spaceAroundColon; j++) string += " ";
 		return string;
-	}
-	
-	/**
-	 * Sets all settings to their deffaults.
-	 */
-	public void setDefault()
-	{
-		indentation = 3;
-		spaceAroundColon = 0;
-	}
-	
-	public enum SBEnum 
-	{
-		DEFAULT,
-		NONE
 	}
 }
