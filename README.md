@@ -55,5 +55,3 @@ obj.write(new File("User-info.json"));
 - [**Documentations**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/docs)
 ## ⚖️ License:
 - [**GPL-3.0**](https://github.com/iAhmadGad/Java-JSON-Handler/blob/main/LICENSE)
-## 👀 See:
-- [**JavaDoc**](https://iahmadgad.github.io/Java-JSON-Handler/iahmadgad/json/package-summary.html)
