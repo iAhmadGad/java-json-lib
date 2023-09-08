@@ -20,22 +20,22 @@ obj.put("name", "Gelobt");
 obj.put("age", 16);
 obj.put("isAlive", true);
 ```
-& Here is an example on how to make a new JSONArray:
+& here is an example on how to make a new JSONArray:
 ```
 JSONArray arr = new JSONArray();
 arr.add("Java");
 arr.add("C++");
 arr.add("Cats");
 ```
-And you can put this array in the JSONObject you`ve just created:
+then you can put this array in the JSONObject you`ve just created:
 ```
 obj.put("THINGS I LOVE", arr);
 ```
-And last but Not least write this JSONObject in a JSON file:
+last but Not least, write this JSONObject in a JSON file:
 ```
 obj.write(new File("User-info.json"));
 ```
-And here is your JSON file:
+& here is your JSON file:
 ```
 {
      "isAlive":true
