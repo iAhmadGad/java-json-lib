@@ -88,7 +88,7 @@ public class JSONStringBuilder
 	}
 	
 	/**
-	 * A counter to know if value is the first value in ther JSONObject or the JSONArray.
+	 * A counter to know if value is the first value in the JSONObject or the JSONArray.
 	 * 
 	 * @see #build(JSONObject, int)
 	 * @see #build(JSONArray, int)
