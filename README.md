@@ -7,7 +7,7 @@
 A simple Java package that Handles JSON. ☕
 ## 💁‍♂️ About:
 - This project is just a simple project I made as a beginner, it is actually my second project after [**JCalculator**](https://github.com/iAhmadGad/JCalculator).
-## 🤔 How to use
+## 🤔 How to use:
 - Download the latest release from [**here**](https://github.com/iAhmadGad/Java-JSON-Handler/releases).
 - Add package to your build using command-line, or your IDE like Eclipse or Netbeans.
 - Here you are! Start making JSONObjects & JSONArrays, read them, write them & even extract them to Java Arrays & Objects.
