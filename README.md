@@ -1,7 +1,4 @@
 <h1 align="center">Java JSON Handler
-<br/>
-  
-`iahmadgad.json` Package
 </h1>
 
 A simple Java package that Handles JSON. ☕
@@ -51,7 +48,7 @@ obj.write(new File("User-info.json"));
 }
 ```
 ## 📄 Repo Index:
-- [**iahmadgad.json**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/src/iahmadgad/json) package
+- [**Source code**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/src/iahmadgad/json) (**`iahmadgad.json`** package)
 - [**Documentations**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/docs)
 ## ⚖️ License:
 - [**GPL-3.0**](https://github.com/iAhmadGad/Java-JSON-Handler/blob/main/LICENSE)
