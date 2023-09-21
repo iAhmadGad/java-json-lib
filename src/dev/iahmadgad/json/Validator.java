@@ -1,4 +1,4 @@
-package iahmadgad.json;
+package dev.iahmadgad.json;
 
 /*
  * Java JSON Handler
@@ -67,7 +67,7 @@ public class Validator
 	 */
 	protected static boolean isJSONObject(Object object)
 	{
-		if(object.getClass().toString().compareTo("class iahmadgad.json.JSONObject") == 0) return true;
+		if(object.getClass().toString().compareTo("class dev.iahmadgad.json.JSONObject") == 0) return true;
 		return false;
 	}
 	
@@ -79,7 +79,7 @@ public class Validator
 	 */
 	protected static boolean isJSONArray(Object object)
 	{
-		if(object.getClass().toString().compareTo("class iahmadgad.json.JSONArray") == 0) return true;
+		if(object.getClass().toString().compareTo("class dev.iahmadgad.json.JSONArray") == 0) return true;
 		return false;
 	}
 	

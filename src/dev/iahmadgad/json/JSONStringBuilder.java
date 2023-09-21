@@ -1,13 +1,9 @@
-package iahmadgad.json;
+package dev.iahmadgad.json;
 
 /*
  * Java JSON Handler
  */
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.Map.Entry;
 
 /**

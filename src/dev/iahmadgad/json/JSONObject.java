@@ -1,4 +1,4 @@
-package iahmadgad.json;
+package dev.iahmadgad.json;
 
 /*
  * Java JSON Handler
