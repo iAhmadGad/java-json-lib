@@ -3,6 +3,9 @@
 
 A simple Java package that Handles JSON. ☕
 ## 💁‍♂️ About:
+- Java JSON Handler is a Java tool makes dealing with JSON easier by creating, reading, writing, & modifying JSON objects & JSON arrays.
+- It supports nested JSON objects & JSON arrays, which you can access using JSON pointers.
+- It also has the feature to change JSON objects & JSON arrays to Java objects & Java arrays -& vice versa-.
 - This project is just a simple project I made as a beginner, it is actually my second project after [**JCalculator**](https://github.com/iAhmadGad/JCalculator).
 ## 🤔 How to use:
 - Download the latest release from [**here**](https://github.com/iAhmadGad/Java-JSON-Handler/releases).
