@@ -3,16 +3,14 @@
 
 A simple Java package that Handles JSON. ☕
 ## 💁‍♂️ About:
-- Java JSON Handler is a Java tool makes dealing with JSON easier by creating, reading, writing, & modifying JSON objects & JSON arrays.
+- Java JSON Handler is a Java tool makes dealing with JSON easier by giving you the the ability to read, write & modify JSON objects & JSON arrays.
 - It supports nested JSON objects & JSON arrays, which you can access using JSON pointers.
 - It also has the feature to change JSON objects & JSON arrays to Java objects & Java arrays -& vice versa-.
-- This project is just a simple project I made as a beginner, it is actually my second project after [**JCalculator**](https://github.com/iAhmadGad/JCalculator).
-## 🤔 How to use:
-- Download the latest release from [**here**](https://github.com/iAhmadGad/Java-JSON-Handler/releases).
+## 🤔 How to downlod:
+- Download the latest [**release**](https://github.com/iAhmadGad/Java-JSON-Handler/releases).
 - Add package to your build using command-line, or your IDE like Eclipse or Netbeans.
-- Here you are! Start making JSONObjects & JSONArrays, read them, write them & even extract them to Java Arrays & Objects.
-
-Here is an example on how to make a new JSONObject:
+## 💡 Code examples:
+Here is an example on how to make a new JSON object:
 ```
 JSONObject obj = new JSONObject();
 obj.put("$id", "User-info");
@@ -20,18 +18,18 @@ obj.put("name", "Gelobt");
 obj.put("age", 16);
 obj.put("isAlive", true);
 ```
-& here is an example on how to make a new JSONArray:
+& here is an example on how to make a new JSON array:
 ```
 JSONArray arr = new JSONArray();
 arr.add("Java");
 arr.add("C++");
 arr.add("Cats");
 ```
-then you can put this array in the JSONObject you`ve just created:
+then you can put this array in the JSON object you`ve just created:
 ```
 obj.put("THINGS I LOVE", arr);
 ```
-last but Not least, write this JSONObject in a JSON file:
+last but not least, write this JSON object in a JSON file:
 ```
 obj.write(new File("User-info.json"));
 ```
