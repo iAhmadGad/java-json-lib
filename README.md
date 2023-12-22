@@ -1,9 +1,9 @@
 <h1 align="center">Java JSON Handler
 </h1>
 
-A simple Java package that Handles JSON. ☕
+A Java package implements JSON handling. ☕
 ## 💁‍♂️ About:
-- Java JSON Handler is a Java tool makes dealing with JSON easier by giving you the the ability to read, write & modify JSON objects & JSON arrays.
+- ``dev.iahmadgad.json`` is a Java package makes handling JSON easier by giving you the the ability to read, write & modify JSON objects & JSON arrays.
 - It supports nested JSON objects & JSON arrays, which you can access using JSON pointers.
 - It also has the feature to change JSON objects & JSON arrays to Java objects & Java arrays -& vice versa-.
 ## 🤔 How to downlod:
@@ -49,7 +49,7 @@ obj.write(new File("User-info.json"));
 }
 ```
 ## 📄 Repo Index:
-- [**Source code**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/src/dev/iahmadgad/json) (**`dev.iahmadgad.json`** package)
+- [**Source code**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/src/dev/iahmadgad/json)
 - [**Documentations**](https://github.com/iAhmadGad/Java-JSON-Handler/tree/main/docs)
 ## ⚖️ License:
 - [**GPL-3.0**](https://github.com/iAhmadGad/Java-JSON-Handler/blob/main/LICENSE)
